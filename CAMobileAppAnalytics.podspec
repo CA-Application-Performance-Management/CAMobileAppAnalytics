@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '20.2.3.2'
+  s.version          = '20.2.3.3'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.social_media_url =  "https://twitter.com/CAinc"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'CA Technologies (A Broadcom Company)' => 'www.broadcom.com' }
-  s.source           = { :git => 'https://github.com/CAAXA/CAMobileAppAnalytics.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
   s.platform         =:ios, '8.0'
   s.source_files = 'CAMobileAppAnalytics/**/*.h'
