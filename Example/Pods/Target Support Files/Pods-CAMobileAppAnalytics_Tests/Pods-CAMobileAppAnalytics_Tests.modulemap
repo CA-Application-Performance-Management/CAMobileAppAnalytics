@@ -1,0 +1,6 @@
+framework module Pods_CAMobileAppAnalytics_Tests {
+  umbrella header "Pods-CAMobileAppAnalytics_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
