@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
                          DESC
-  s.homepage = "https://github.com/CAAXA/CAMobileAppAnalytics"
+  s.homepage = "https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-enterprise-software/it-operations-management/app-experience-analytics-saas/SaaS/configuring/collect-data-from-ios-applications.html"
   s.social_media_url =  "https://twitter.com/CAinc"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'CA Technologies (A Broadcom Company)' => 'www.broadcom.com' }
