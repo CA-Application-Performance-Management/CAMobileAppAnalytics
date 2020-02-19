@@ -13,41 +13,22 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 2. iOS 8.0 or higher
 
 ## Installation
-
-CAMobileAppAnalytics supports multiple methods for installing the library in a project.
-
-### Cocoapods (Podfile) Install
 Follow these steps to install the CAMobileAppAnalytics library in your Xcode project using CocoaPods:
-1. Specify `CAMobileAppAnalytics` in your **Podfile:**
-
+1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile**
+example:
 ```
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-
-pod 'CAMobileAppAnalytics'
+target 'YourApp' do
+    pod 'CAMobileAppAnalytics'
+end
 ```
-Then, run the following command using the command prompt from the folder of your project:
+Then, run the following command using the command prompt from the folder of your project
 
 ```
 $ pod install
 ```
 2. Drag & Drop `xxx_camdo.plist` file into the Supporting files
 
-### Manual Install
-
-Follow these steps to manually install the CAMobileAppAnalytics library in your Xcode project:
-
-1. Open your project in Xcode.
-2. Drag the `CAMobileAppAnalytics` folder, and drop them into your your project in the left navigator panel in Xcode. Select the option, `Copy items if needed`.
-3. Drag & Drop `xxx_camdo.plist` file into the Supporting files
-4. Include `ca-maa-ios-sdk.xcconfig` file in your App Project settings if no xcconfig was selected under Info —> Configurations —> Debug & Release
-    +   Select the Info tab
-    +   Under Configurations, expand Debug
-    +   Under Based on Configuration File, select `ca-maa-ios-sdk.xcconfig` against the app
-    +   Expand Release and repeat the above steps.
-5. If any `<appspecific>.xcconfig` already exists/selected in your App Project settings under Info —> Configurations —> Debug & Release then this may conflict when adding `ca-maa-ios-sdk.xcconfig` to the project. To build the application successfully both the configurations are required. Add/append `OTEHR_LDFLAGS` of `ca-maa-ios-sdk.config` in your `app-specific` config files.
-
-## Integrating SDK in your Source code
+## Initialising the SDK in your Source code
 ### Objective C
 
 1. Add the import header `#import "CAMDOReporter.h"` to your AppDelegate.m file
