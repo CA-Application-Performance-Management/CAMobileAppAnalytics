@@ -17,6 +17,7 @@ Follow these steps to install the CAMobileAppAnalytics SDK in your Xcode project
 1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile**
 
 example:
+
 ```
 target 'YourApp' do
     pod 'CAMobileAppAnalytics'
