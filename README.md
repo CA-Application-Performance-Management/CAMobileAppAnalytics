@@ -13,8 +13,9 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 2. iOS 8.0 or higher
 
 ## Installation
-Follow these steps to install the CAMobileAppAnalytics library in your Xcode project using CocoaPods:
+Follow these steps to install the CAMobileAppAnalytics SDK in your Xcode project using CocoaPods
 1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile**
+
 example:
 ```
 target 'YourApp' do
