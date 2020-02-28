@@ -12,8 +12,8 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 1. Xcode 11 or higher
 2. iOS 8.0 or higher
 
-## Installation
-Follow these steps to install the CAMobileAppAnalytics SDK in your Xcode project using CocoaPods
+## Integration
+Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode project using CocoaPods
 1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile**
 
 example:
@@ -28,7 +28,7 @@ Then, run the following command using the command prompt from the folder of your
 ```
 $ pod install
 ```
-2. Drag & Drop `xxx_camdo.plist` file into the Supporting files
+2. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
 
 ## Initialising the SDK in your Source code
 ### Objective C
@@ -84,7 +84,7 @@ For more documentation and API references, go to our [main website](https://tech
 
 ## License
 
-Copyright (c) 2019 Broadcom. All Rights Reserved.
+Copyright (c) 2020 Broadcom. All Rights Reserved.
 The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 This software may be modified and distributed under the terms
