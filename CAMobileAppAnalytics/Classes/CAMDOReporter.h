@@ -27,8 +27,9 @@ extern NSString *const CAMAA_CRASH_OCCURRED;
  Key : "AXACLLocationLevel";   String - one of the values :     "BestForNavigation" ,"NearestTenMeters" , "HundredMeters" ,"Kilometer" ,"ThreeKilometers"
  Key : "AXACollectIp";  Boolean : True/False
  Key : "AXAMaxUploadNetworkCallsLimit";  String  : 1 - 10
- Key : "AXADisabledInterceptors";  Array : NSURLConnection ,NSURLSession ,UIActivityIndicatorView ,UIApplication ,UIWebView , WKWebView , Gestures , Touch ; Note : Including UIApplication disables SDK.
+ Key : "AXADisabledInterceptors";  Array : NSURLConnection ,NSURLSession ,UIActivityIndicatorView ,UIApplication , WKWebView , Gestures , Touch ; Note : Including UIApplication disables SDK.
  Key : "AXANavigationThrottle" ; String - 1000 , time in milliseconds to throttle navigation collection;
+ Key : "AXAActiveSessionTimeOut" ; String, time in milliseconds to stop and start the new session when your app is a continuously active state
  */
 
 //Register for SDK data upload notification. The receiver is notified when SDK uploads the data to the Collector.
