@@ -1,0 +1,16 @@
+//
+//  ca-maa-ios-sdk.xcconfig
+//  ca-mdo-ios-sdk
+//
+//  Created by Suman Cherukuri on 3/9/15.
+//  Copyright (c) 2015 CA Technologies. All rights reserved.
+//
+OTHER_CFLAGS=$(inherited) -DObjC
+//OTHER_LDFLAGS=$(inherited) -ObjC -lc++ -lz -lsqlite3 -framework CoreLocation -framework SystemConfiguration -framework Foundation -framework UIKit -framework CoreGraphics -framework Security -framework CoreTelephony -framework WebKit -framework WatchConnectivity //-framework CoreBluetooth
+
+//***********
+//*** NOTE: If you have some native library (like libdtdev.a) in your project that
+//***       doesn't like -ObjC linker flag, use the following setting instead of the one above
+//***********
+
+OTHER_LDFLAGS=$(inherited) -lc++ -lz -lsqlite3 -framework CoreLocation -framework SystemConfiguration -framework Foundation -framework UIKit -framework CoreGraphics -framework Security -framework CoreTelephony -framework WebKit -framework WatchConnectivity -Wl -force_load "$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-CAMAA/libCAMobileAppAnalytics.a" -Wl -force_load "$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-CAMAA/libCAMobileAppAnalytics-simulator.a" // -framework CoreBluetooth

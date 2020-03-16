@@ -1,0 +1,17 @@
+Params for CA SDK wrapper.
+
+Say for example 
+- for a debug varient, something like "-a ../../platforms/android/build/outputs/apk/debug/android-debug.apk -p app_camdo.plist -S thirdparty/CAMobileAppAnalytics-wrapper -o android-debug.apk" will do.
+- for a release varient something like "-a ../../platforms/android/build/outputs/apk/release/android-release.apk -p app_camdo.plist -S thirdparty/CAMobileAppAnalytics-wrapper -o android-release.apk" will do.
+
+
+Here is the legend about the parameters: 
+- The -S, -a, -p parameters are mandatory 
+- "-S" parameter specifies the CA SDK location inside the project. All the other paths should be relative to this location.
+- All other parameters are normal wrap parameters, which are documented hhttps://docops.ca.com/ca-app-experience-analytics-digital-experience-insights-from-ca/ga/en/configuring/collect-data-from-android-applications
+
+
+___WRAP_OPTIONS___=
+
+
+

@@ -1,6 +1,0 @@
-use_frameworks!
-target 'CAMobileAppAnalytics_Tests' do
-  pod 'CAMobileAppAnalytics', :path => '../'
-  
-  
-end

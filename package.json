@@ -1,0 +1,18 @@
+{
+  "name": "axa-cordova-plugin",
+  "version": "1.0.0",
+  "description": "CAMAA Cordova library plugin. ",
+  "cordova": {
+    "id": "axa-cordova-plugin",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "CAMAA Library",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "CA",
+  "license": "Apache 2.0"
+}

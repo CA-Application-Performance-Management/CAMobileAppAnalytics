@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Application</key>
+	<array>
+		<dict>
+			<key>profileURL</key>
+			<string>https://dxc-route-8080-ao-axa.app.gdue4.saasdev.broadcom.com/api/1/urn:ca:tenantId:65E89731-84C8-466F-B812-E87D60DCD03F/urn:ca:appId:CordovaTestApp/profile</string>
+			<key>baseURL</key>
+			<string>https://dxc-route-8080-ao-axa.app.gdue4.saasdev.broadcom.com</string>
+			<key>collectorUploadURL</key>
+			<string>https://dxc-route-8080-ao-axa.app.gdue4.saasdev.broadcom.com/api/1/urn:ca:tenantId:65E89731-84C8-466F-B812-E87D60DCD03F/urn:ca:appId:CordovaTestApp/mobileMetrics</string>
+			<key>appId</key>
+			<string>CordovaTestApp</string>
+			<key>tenantID</key>
+			<string>65E89731-84C8-466F-B812-E87D60DCD03F</string>
+			<key>appKey</key>
+			<string>24d9d350-d478-11e9-9aeb-39302e0ea586</string>
+		</dict>
+	</array>
+</dict>
+</plist>
