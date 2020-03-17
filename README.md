@@ -7,24 +7,17 @@
 ---
 ### Installation
 
-$MyCordovaApp is a shell variable to the cordova application you want to install the plugin to
-
-$Plugin is the location of the CAMAA iOS plugin source
-
-Now **copy your iOS plist file** from http://cloud.ca.com **into the $Plugin repo and rename it to  cordova_camdo.plist**. You should overwrite the existing file.
-
-Delete the previous installation
-
-
-```sh
-$ cp /my/project_camdo.plist $Plugin/cordova_camdo.plist
-$ cd $MyCordovaApp
-$ cordova plugin remove $Plugin
-$ cordova plugin add $Plugin --nofetch
+```
+cordova plugin add cordova-plugin-axa
 ```
 
+### Supported platforms
+* iOS
 
+```
+Note: Download **xxx_camdo.plist** and rename it to **cordova_camdo.plist**. You should overwrite this existing file in your project after you installed the plugin.
 
+```
 
 ---
 ---
