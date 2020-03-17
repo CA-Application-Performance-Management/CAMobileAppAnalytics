@@ -1,12 +1,16 @@
 {
-  "name": "axa-cordova-plugin",
+  "name": "cordova-plugin-axa",
   "version": "1.0.0",
   "description": "CAMAA Cordova library plugin. ",
   "cordova": {
-    "id": "axa-cordova-plugin",
+    "id": "cordova-plugin-axa",
     "platforms": [
       "ios"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics/tree/axa-cordova-plugin"
   },
   "keywords": [
     "CAMAA Library",
