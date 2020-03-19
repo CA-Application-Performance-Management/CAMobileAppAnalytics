@@ -13,4 +13,4 @@ OTHER_CFLAGS=$(inherited) -DObjC
 //***       doesn't like -ObjC linker flag, use the following setting instead of the one above
 //***********
 
-OTHER_LDFLAGS=$(inherited) -lc++ -lz -lsqlite3 -framework CoreLocation -framework SystemConfiguration -framework Foundation -framework UIKit -framework CoreGraphics -framework Security -framework CoreTelephony -framework WebKit -framework WatchConnectivity -Wl -force_load "$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-axa/libCAMobileAppAnalytics.a" -Wl -force_load "$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-axa/libCAMobileAppAnalytics-simulator.a" // -framework CoreBluetooth
+OTHER_LDFLAGS=$(inherited) -lc++ -lz -lsqlite3 -framework CoreLocation -framework SystemConfiguration -framework Foundation -framework UIKit -framework CoreGraphics -framework Security -framework CoreTelephony -framework WebKit -framework WatchConnectivity -Wl -force_load "$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-CAMAA/libCAMobileAppAnalytics.a" -Wl -force_load "$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-CAMAA/libCAMobileAppAnalytics-simulator.a" // -framework CoreBluetooth
