@@ -1,6 +1,6 @@
-# CAMAA iOS Cordova Plugin
+# CAAXA iOS Cordova Plugin
 
-CAMobileAppAnalytics cordova plugin is an iOS plugin for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps.
+CAAXA cordova plugin is an iOS plugin for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps.
 
 
 ## Get Started
@@ -18,9 +18,9 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 Follow these steps to integrate the `camaa cordova plugin` in your project
 1. Run the following command from your Cordova project directory
 ```
-cordova plugin add cordova-plugin-camaa
+cordova plugin add cordova-plugin-caaxa
 ```
-2. Download `xxx_camdo.plist` and rename it to `cordova_camdo.plist`. You should replace this with existing file in your project after you installed the `camaa cordova plugin`.
+2. Download `xxx_camdo.plist` and rename it to `cordova_camdo.plist`. You should replace this with existing file in your project after you installed the `caaxa cordova plugin`.
 
 
 ---
