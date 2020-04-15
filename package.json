@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-caaxa",
-  "version": "20.3.1",
-  "description": "CAAXA Cordova library plugin. ",
+  "name": "cordova-plugin-camaa",
+  "version": "20.4.1",
+  "description": "CAMAA Cordova library plugin. ",
   "cordova": {
-    "id": "cordova-plugin-caaxa",
+    "id": "cordova-plugin-camaa",
     "platforms": [
       "ios"
     ]
@@ -13,7 +13,7 @@
     "url": "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics/tree/axa-cordova-plugin"
   },
   "keywords": [
-    "CAAXA Cordova plugin",
+    "CAMAA Cordova plugin",
     "CA Mobile App Analytics",
     "Broadcom",
     "ecosystem:cordova",
