@@ -912,6 +912,8 @@ function sendIntegrationEvent(dictionary) {
 
 var sendMAASDKEvent = function(nativeCallInfo) {
     try{
+                              console.log("window.webkit: "+window.webkit+"window.webkit.messageHandlers: "+window.webkit.messageHandlers+"window.webkit.messageHandlers.camaa: "+window.webkit.messageHandlers.camaa);
+                              
         //Android Integration
         if (typeof CaMaaAndroidIntegration != 'undefined') {
             preProcess(nativeCallInfo,false);
