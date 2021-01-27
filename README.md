@@ -36,6 +36,7 @@ $ pod install
 1. Add the import header `#import "CAMDOReporter.h"` to your AppDelegate.m file
 
 2. Initialize the CAMobileAppAnalytics sdk in `didFinishLaunchingWithOptions:` method 
+
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
