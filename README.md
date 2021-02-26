@@ -58,4 +58,5 @@ window.camaa.isSDKEnabled((didSucceed)=>{
  - Write more Tests
  - Add remaining Android SDK methods
  - Make error reporting more descriptive
+ 
 
