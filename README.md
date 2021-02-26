@@ -1,6 +1,6 @@
-# CAMAA iOS Cordova Plugin
+# CAMAA Cordova Plugin
 
-CAMAA cordova plugin is an iOS plugin for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps.
+CAMAA cordova plugin is a plugin for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps.
 
 
 ## Get Started
@@ -10,6 +10,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 
 ## Supported platforms
 * iOS
+* Android
 
 ## Requirements
 1. iOS 8.0 or higher
@@ -28,9 +29,9 @@ cordova plugin add cordova-plugin-camaa
 ### Useful Tips
   ##### SDK API
 
-- AXALoader.js contains all of the javascript API calls which trigger the corresponding method in CAMDOReporter.h(however it goes through CAMAAInitializer.m)
+- AXALoader.js contains all of the javascript API calls which trigger the corresponding SDK methods
 - AXALoader.js has a tiny interface which tells you the expected types for the parameters
-- For a full description of the function and what it does see CAMDOReporter.h and search for the function name
+- For a full description of the function and what it does see CAMDOReporter.h for iOS and CAMAAInitalizer.java for Android and search for the function name
 -  access API via **window.camaa**  Ex :
   ```js
 window.camaa.isSDKEnabled((didSucceed)=>{
@@ -41,16 +42,20 @@ window.camaa.isSDKEnabled((didSucceed)=>{
     // but for other cases there will not always be a description of the error
     console.log("The function failed with description : " + didFail);
 });
-// If confused It is always best to consult CAMAAInitializer.m
+// If confused It is always best to consult CAMAAInitializer.m or CAMAAInitalizer.java
   // to see the actual implementation
   ```
 
 ---
 ---
+
+### Notes
+
+  - Only few SDK methods are implemented in Android
+
 ### Todos
 
  - Write more Tests
- - Add android support
+ - Add remaining Android SDK methods
  - Make error reporting more descriptive
-
 

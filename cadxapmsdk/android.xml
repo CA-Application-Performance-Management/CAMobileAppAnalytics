@@ -1,0 +1,686 @@
+<?xml version="1.0"?>
+<CA_SDK>
+
+    <regexReplacement  id="regexWebView">
+        <pattern>invoke-direct,android/webkit/WebView</pattern>
+        <pattern>invoke-super,android/webkit/WebView</pattern>
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <matcher>android/webkit/WebView</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexActivity">
+        <pattern>invoke-direct,android/app/Activity</pattern>
+        <pattern>invoke-super,android/app/Activity</pattern>
+        <ownerFrom>android/app/Activity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOActivity</ownerTo>
+        <matcher>android/app/Activity</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexActivityGroup">
+        <pattern>invoke-direct,android/app/ActivityGroup</pattern>
+        <pattern>invoke-super,android/app/ActivityGroup</pattern>
+        <ownerFrom>android/app/ActivityGroup</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOActivityGroup</ownerTo>
+        <matcher>android/app/ActivityGroup</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexAccountAuthenticatorActivity">
+        <pattern>invoke-direct,android/accounts/AccountAuthenticatorActivity</pattern>
+        <pattern>invoke-super,android/accounts/AccountAuthenticatorActivity</pattern>
+        <ownerFrom>android/accounts/AccountAuthenticatorActivity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaAccountAuthenticatorActivity</ownerTo>
+        <matcher>android/accounts/AccountAuthenticatorActivity</matcher>
+    </regexReplacement>
+
+
+    <regexReplacement  id="regexListActivity">
+        <pattern>invoke-direct,android/app/ListActivity</pattern>
+        <pattern>invoke-super,android/app/ListActivity</pattern>
+        <ownerFrom>android/app/ListActivity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaListActivity</ownerTo>
+        <matcher>android/app/ListActivity</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexPreferenceActivity">
+        <pattern>invoke-direct,android/preference/PreferenceActivity</pattern>
+        <pattern>invoke-super,android/preference/PreferenceActivity</pattern>
+        <ownerFrom>android/preference/PreferenceActivity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaPreferenceActivity</ownerTo>
+        <matcher>android/preference/PreferenceActivity</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexAliasActivity">
+        <pattern>invoke-direct,android/app/AliasActivity</pattern>
+        <pattern>invoke-super,android/app/AliasActivity</pattern>
+        <ownerFrom>android/app/AliasActivity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaAliasActivity</ownerTo>
+        <matcher>android/app/AliasActivity</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexExpandableListActivity">
+        <pattern>invoke-direct,android/app/ExpandableListActivity</pattern>
+        <pattern>invoke-super,android/app/ExpandableListActivity</pattern>
+        <ownerFrom>android/app/ExpandableListActivity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaExpandableListActivity</ownerTo>
+        <matcher>android/app/ExpandableListActivity</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexNativeActivity">
+        <pattern>invoke-direct,android/app/NativeActivity</pattern>
+        <pattern>invoke-super,android/app/NativeActivity</pattern>
+        <ownerFrom>android/app/NativeActivity</ownerFrom>
+        <ownerTo>com/ca/android/app/CaNativeActivity</ownerTo>
+        <matcher>android/app/NativeActivity</matcher>
+    </regexReplacement>
+
+    <regexReplacement  id="regexFragment">
+        <pattern>invoke-direct,android/app/Fragment</pattern>
+        <pattern>invoke-super,android/app/Fragment</pattern>
+        <ownerFrom>android/app/Fragment</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOFragment</ownerTo>
+        <matcher>android/app/Fragment</matcher>
+    </regexReplacement>
+
+
+    <classReplacement id="WebView">
+        <from>android/webkit/WebView</from>
+        <to>com/ca/android/app/CaMDOWebView</to>
+    </classReplacement>
+    <classReplacement id="Activity">
+        <from>android/app/Activity</from>
+        <to>com/ca/android/app/CaMDOActivity</to>
+    </classReplacement>
+    <classReplacement id="ActivityGroup">
+        <from>android/app/ActivityGroup</from>
+        <to>com/ca/android/app/CaMDOActivityGroup</to>
+    </classReplacement>
+    <classReplacement id="AccountAuthenticatorActivity">
+        <from>android/accounts/AccountAuthenticatorActivity</from>
+        <to>com/ca/android/app/CaAccountAuthenticatorActivity</to>
+    </classReplacement>
+    <classReplacement id="ListActivity">
+        <from>android/app/ListActivity</from>
+        <to>com/ca/android/app/CaListActivity</to>
+    </classReplacement>
+    <classReplacement id="PreferenceActivity">
+        <from>android/preference/PreferenceActivity</from>
+        <to>com/ca/android/app/CaPreferenceActivity</to>
+    </classReplacement>
+    <classReplacement id="AliasActivity">
+        <from>android/app/AliasActivity</from>
+        <to>com/ca/android/app/CaAliasActivity</to>
+    </classReplacement>
+    <classReplacement id="ExpandableListActivity">
+        <from>android/app/ExpandableListActivity</from>
+        <to>com/ca/android/app/CaExpandableListActivity</to>
+    </classReplacement>
+    <classReplacement id="NativeActivity">
+        <from>android/app/NativeActivity</from>
+        <to>com/ca/android/app/CaNativeActivity</to>
+    </classReplacement>
+    <!-- android/app/Fragment related instrumentation mapping -->
+    <classReplacement id="Fragment">
+        <from>android/app/Fragment</from>
+        <to>com/ca/android/app/CaMDOFragment</to>
+    </classReplacement>
+
+    <classReplacement id="bitmapIStub">
+        <from>com/ca/android/integrations/crosswalk/IStub_XWalkGetBitmapCallbackInternal</from>
+        <to>org/xwalk/core/internal/XWalkGetBitmapCallbackInternal</to>
+    </classReplacement>
+
+    <methodReplacement id="BluetoothLeAdvertiserStop">
+        <ownerFrom>android/bluetooth/le/BluetoothLeAdvertiser</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothDevice</ownerTo>
+        <from>stopAdvertising</from>
+        <to>stopAdvertising</to>
+        <descFrom>(Landroid/bluetooth/le/AdvertiseCallback;)V</descFrom>
+        <descTo>(Landroid/bluetooth/le/BluetoothLeAdvertiser;Landroid/bluetooth/le/AdvertiseCallback;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothLeAdvertiserStart">
+        <ownerFrom>android/bluetooth/le/BluetoothLeAdvertiser</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothDevice</ownerTo>
+        <from>startAdvertising</from>
+        <to>startAdvertising</to>
+        <descFrom>(Landroid/bluetooth/le/AdvertiseSettings;Landroid/bluetooth/le/AdvertiseData;Landroid/bluetooth/le/AdvertiseData;Landroid/bluetooth/le/AdvertiseCallback;)V</descFrom>
+        <descTo>(Landroid/bluetooth/le/BluetoothLeAdvertiser;Landroid/bluetooth/le/AdvertiseSettings;Landroid/bluetooth/le/AdvertiseData;Landroid/bluetooth/le/AdvertiseData;Landroid/bluetooth/le/AdvertiseCallback;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothManagerOpen">
+        <ownerFrom>android/bluetooth/BluetoothManager</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothDevice</ownerTo>
+        <from>openGattServer</from>
+        <to>openGattServer</to>
+        <descFrom>(Landroid/content/Context;Landroid/bluetooth/BluetoothGattServerCallback;)Landroid/bluetooth/BluetoothGattServer</descFrom>
+        <descTo>(Landroid/bluetooth/BluetoothManager;Landroid/content/Context;Landroid/bluetooth/BluetoothGattServerCallback;)Landroid/bluetooth/BluetoothGattServer</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothDeviceConnect">
+        <ownerFrom>android/bluetooth/BluetoothDevice</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothDevice</ownerTo>
+        <from>connectGatt</from>
+        <to>connectGatt</to>
+        <descFrom>(Landroid/content/Context;ZLandroid/bluetooth/BluetoothGattCallback;)Landroid/bluetooth/BluetoothGatt</descFrom>
+        <descTo>(Landroid/bluetooth/BluetoothDevice;Landroid/content/Context;ZLandroid/bluetooth/BluetoothGattCallback;)Landroid/bluetooth/BluetoothGatt</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothAdapterStart">
+        <ownerFrom>android/bluetooth/BluetoothAdapter</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothAdapter</ownerTo>
+        <from>startLeScan</from>
+        <to>startLeScan</to>
+        <descFrom>(Landroid/bluetooth/BluetoothAdapter$LeScanCallback;)Z</descFrom>
+        <descTo>(Landroid/bluetooth/BluetoothAdapter;Landroid/bluetooth/BluetoothAdapter$LeScanCallback;)Z</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothAdapterStop">
+        <ownerFrom>android/bluetooth/BluetoothAdapter</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothAdapter</ownerTo>
+        <from>stopLeScan</from>
+        <to>stopLeScan</to>
+        <descFrom>(Landroid/bluetooth/BluetoothAdapter$LeScanCallback;)V</descFrom>
+        <descTo>(Landroid/bluetooth/BluetoothAdapter;Landroid/bluetooth/BluetoothAdapter$LeScanCallback;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothLeScannerStart">
+        <ownerFrom>android/bluetooth/le/BluetoothLeScanner</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothLeScanner</ownerTo>
+        <from>startScan</from>
+        <to>startScan</to>
+        <descFrom>(Landroid/bluetooth/le/ScanCallback;)V</descFrom>
+        <descTo>(Landroid/bluetooth/le/BluetoothLeScanner;Landroid/bluetooth/le/ScanCallback;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="BluetoothLeScannerStop">
+        <ownerFrom>android/bluetooth/le/BluetoothLeScanner</ownerFrom>
+        <ownerTo>com/ca/android/bluetooth/CaMDOBluetoothLeScanner</ownerTo>
+        <from>stopScan</from>
+        <to>stopScan</to>
+        <descFrom>(Landroid/bluetooth/le/ScanCallback;)V</descFrom>
+        <descTo>(Landroid/bluetooth/le/BluetoothLeScanner;Landroid/bluetooth/le/ScanCallback;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="setUncaughtExceptionHandler">
+        <ownerFrom>java/lang/Thread</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMdoUncaughtExceptionHandler</ownerTo>
+        <from>setDefaultUncaughtExceptionHandler</from>
+        <to>setDefaultUncaughtExceptionHandler</to>
+        <descFrom>(Ljava/lang/Thread$UncaughtExceptionHandler;)V</descFrom>
+        <descTo>(Ljava/lang/Thread$UncaughtExceptionHandler;)V</descTo>
+    </methodReplacement>
+
+    <methodReplacement id="getUncaughtExceptionHandler">
+        <ownerFrom>java/lang/Thread</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMdoUncaughtExceptionHandler</ownerTo>
+        <from>getDefaultUncaughtExceptionHandler</from>
+        <to>getDefaultUncaughtExceptionHandler</to>
+        <descFrom>()Ljava/lang/Thread$UncaughtExceptionHandler;</descFrom>
+        <descTo>()Ljava/lang/Thread$UncaughtExceptionHandler;</descTo>
+    </methodReplacement>
+
+    <methodReplacement id="WebViewSetWVC">
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <from>setWebViewClient</from>
+        <to>setWebViewClient</to>
+        <descFrom>(Landroid/webkit/WebViewClient;)V</descFrom>
+        <descTo>(Landroid/webkit/WebView;Landroid/webkit/WebViewClient;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="WebViewLoadUrl">
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <from>loadUrl</from>
+        <to>loadUrl</to>
+        <descFrom>(Ljava/lang/String;)V</descFrom>
+        <descTo>(Landroid/webkit/WebView;Ljava/lang/String;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="WebViewPostUrl">
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <from>postUrl</from>
+        <to>postUrl</to>
+        <descFrom>(Ljava/lang/String;[B)V</descFrom>
+        <descTo>(Landroid/webkit/WebView;Ljava/lang/String;[B)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="WebViewLoadUrl1">
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <from>loadUrl</from>
+        <to>loadUrl</to>
+        <descFrom>(Ljava/lang/String;Ljava/util/Map;)V</descFrom>
+        <descTo>(Landroid/webkit/WebView;Ljava/lang/String;Ljava/util/Map;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="ApacheAndroidHttpClientExecute">
+        <ownerFrom>android/net/http/AndroidHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Landroid/net/http/AndroidHttpClient;Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="ApacheAbstractHttpClientExecute">
+        <ownerFrom>org/apache/http/impl/client/AbstractHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/AbstractHttpClient;Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute1">
+        <ownerFrom>org/apache/http/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute2">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;)Ljava/lang/Object;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;)Ljava/lang/Object;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute3">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute4">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute5">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute6">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/client/ResponseHandler;)Ljava/lang/Object;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/client/ResponseHandler;)Ljava/lang/Object;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="ApacheDefaultHttpClientExecute">
+        <ownerFrom>org/apache/http/impl/client/DefaultHttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;</descFrom>
+        <descTo>(Lorg/apache/http/impl/client/DefaultHttpClient;Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/client/ResponseHandler;Lorg/apache/http/protocol/HttpContext;)Ljava/lang/Object;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="HttpClientExecute">
+        <ownerFrom>org/apache/http/client/HttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/client/HttpClient;Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-interface</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="HttpClientExecute1">
+        <ownerFrom>org/apache/http/client/HttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/client/HttpClient;Lorg/apache/http/HttpHost;Lorg/apache/http/HttpRequest;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-interface</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="HttpClientExecute2">
+        <ownerFrom>org/apache/http/client/HttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/client/HttpClient;Lorg/apache/http/client/methods/HttpUriRequest;Lorg/apache/http/protocol/HttpContext;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-interface</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <methodReplacement id="HttpClientExecute3">
+        <ownerFrom>org/apache/http/client/HttpClient</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>execute</from>
+        <to>execute</to>
+        <descFrom>(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;</descFrom>
+        <descTo>(Lorg/apache/http/client/HttpClient;Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;</descTo>
+        <methodFrom>invoke-interface</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="URLConnectionConnect">
+        <ownerFrom>java/net/URLConnection</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>connect</from>
+        <to>connect</to>
+        <descFrom>()V</descFrom>
+        <descTo>(Ljava/net/URLConnection;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <methodReplacement id="HttpURLConnectionConnect">
+        <ownerFrom>java/net/HttpURLConnection</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>connect</from>
+        <to>connect</to>
+        <descFrom>()V</descFrom>
+        <descTo>(Ljava/net/URLConnection;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+    <methodReplacement id="HttpsURLConnectionConnect">
+        <ownerFrom>javax/net/ssl/HttpsURLConnection</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>connect</from>
+        <to>connect</to>
+        <descFrom>()V</descFrom>
+        <descTo>(Ljava/net/URLConnection;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <!--    <methodReplacement id="HttpUrlConnectionAddRequestProperty">-->
+    <!--        <ownerFrom>java/net/HttpURLConnection</ownerFrom>-->
+    <!--        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>-->
+    <!--        <from>addRequestProperty</from>-->
+    <!--        <to>addHttpConnectionRequestProperty</to>-->
+    <!--        <descFrom>(Ljava/lang/String;Ljava/lang/String;)V</descFrom>-->
+    <!--        <descTo>(Ljava/net/HttpURLConnection;Ljava/lang/String;Ljava/lang/String;)V</descTo>-->
+    <!--        <methodFrom>invoke-virtual</methodFrom>-->
+    <!--        <methodTo>invoke-static</methodTo>-->
+    <!--    </methodReplacement>-->
+
+    <methodReplacement id="HttpUrlConnectionsetConnectTimeout">
+        <ownerFrom>java/net/HttpURLConnection</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>setConnectTimeout</from>
+        <to>setHttpUrlConnectionConnectTimeout</to>
+        <descFrom>(I)V</descFrom>
+        <descTo>(Ljava/net/HttpURLConnection;I)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>com/squareup/okhttp/internal</skipFile>
+    </methodReplacement>
+
+    <methodReplacement id="HttpUrlConnectionSetRequestMethod">
+        <ownerFrom>java/net/HttpURLConnection</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>setRequestMethod</from>
+        <to>setRequestMethod</to>
+        <descFrom>(Ljava/lang/String;)V</descFrom>
+        <descTo>(Ljava/net/HttpURLConnection;Ljava/lang/String;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>com/squareup/okhttp/internal</skipFile>
+    </methodReplacement>
+
+    <methodReplacement id="HTTPURLopenConnection">
+        <ownerFrom>java/net/URL</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>openConnection</from>
+        <to>openConnection</to>
+        <descFrom>()Ljava/net/URLConnection;</descFrom>
+        <descTo>(Ljava/net/URL;)Ljava/net/URLConnection;</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>com/squareup/okhttp/internal</skipFile>
+    </methodReplacement>
+
+
+    <methodReplacement id="HttpURLConnectionResponseCode">
+        <ownerFrom>java/net/HttpURLConnection</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOHTTPClient</ownerTo>
+        <from>getResponseCode</from>
+        <to>getResponseCode</to>
+        <descFrom>()I</descFrom>
+        <descTo>(Ljava/net/HttpURLConnection;)I</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>com/squareup/okhttp/internal</skipFile>
+    </methodReplacement>
+
+    <methodReplacement id="ProgressBar">
+        <ownerFrom>android/widget/ProgressBar</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOProgressBar</ownerTo>
+        <from>setVisibility</from>
+        <to>setVisibility</to>
+        <descFrom>(I)V</descFrom>
+        <descTo>(Landroid/widget/ProgressBar;I)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <!-- End API variant with CallBack-->
+
+    <!-- Service related replacements -->
+
+    <regexReplacement  id="regexService">
+        <pattern>invoke-direct,android/app/Service</pattern>
+        <pattern>invoke-super,android/app/Service</pattern>
+        <ownerFrom>android/app/Service</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOService</ownerTo>
+        <matcher>android/app/Service</matcher>
+    </regexReplacement>
+
+    <classReplacement id="Service">
+        <from>android/app/Service</from>
+        <to>com/ca/android/app/CaMDOService</to>
+    </classReplacement>
+
+    <!-- Basic Input Controls -->
+
+    <!-- Buttons -->
+
+    <methodReplacement id="ButtonClick">
+        <ownerFrom>android/widget/Button</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOView</ownerTo>
+        <from>setOnClickListener</from>
+        <to>setOnClickListener</to>
+        <descFrom>(Landroid/view/View$OnClickListener;)V</descFrom>
+        <descTo>(Landroid/view/View;Landroid/view/View$OnClickListener;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <regexReplacement  id="regexButton">
+        <pattern>invoke-direct,android/widget/Button</pattern>
+        <pattern>invoke-super,android/widget/Button</pattern>
+        <ownerFrom>android/widget/Button</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOButton</ownerTo>
+        <matcher>android/widget/Button</matcher>
+    </regexReplacement>
+
+    <classReplacement id="CustomButton">
+        <from>android/widget/Button</from>
+        <to>com/ca/android/app/CaMDOButton</to>
+    </classReplacement>
+
+
+    <methodReplacement id="CheckBoxClick">
+        <ownerFrom>android/widget/CheckBox</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOView</ownerTo>
+        <from>setOnClickListener</from>
+        <to>setOnClickListener</to>
+        <descFrom>(Landroid/view/View$OnClickListener;)V</descFrom>
+        <descTo>(Landroid/view/View;Landroid/view/View$OnClickListener;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+
+    <regexReplacement  id="regexCheckBox">
+        <pattern>invoke-direct,android/widget/CheckBox</pattern>
+        <pattern>invoke-super,android/widget/CheckBox</pattern>
+        <ownerFrom>android/widget/CheckBox</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOCheckBox</ownerTo>
+        <matcher>android/widget/CheckBox</matcher>
+    </regexReplacement>
+
+    <classReplacement id="CustomCheckBox">
+        <from>android/widget/CheckBox</from>
+        <to>com/ca/android/app/CaMDOCheckBox</to>
+    </classReplacement>
+
+    <methodReplacement id="RadioButtonClick">
+        <ownerFrom>android/widget/RadioButton</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOView</ownerTo>
+        <from>setOnClickListener</from>
+        <to>setOnClickListener</to>
+        <descFrom>(Landroid/view/View$OnClickListener;)V</descFrom>
+        <descTo>(Landroid/view/View;Landroid/view/View$OnClickListener;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <regexReplacement  id="regexRadioButton">
+        <pattern>invoke-direct,android/widget/RadioButton</pattern>
+        <pattern>invoke-super,android/widget/RadioButton</pattern>
+        <ownerFrom>android/widget/RadioButton</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDORadioButton</ownerTo>
+        <matcher>android/widget/RadioButton</matcher>
+    </regexReplacement>
+
+    <classReplacement id="CustomRadioButton">
+        <from>android/widget/RadioButton</from>
+        <to>com/ca/android/app/CaMDORadioButton</to>
+    </classReplacement>
+
+    <!-- Toggle Buttons -->
+
+
+    <methodReplacement id="ToggleButtonClick">
+        <ownerFrom>android/widget/ToggleButton</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOView</ownerTo>
+        <from>setOnClickListener</from>
+        <to>setOnClickListener</to>
+        <descFrom>(Landroid/view/View$OnClickListener;)V</descFrom>
+        <descTo>(Landroid/view/View;Landroid/view/View$OnClickListener;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <!--    &lt;!&ndash; Pull-down Menus / Spinners &ndash;&gt;-->
+
+    <methodReplacement id="SpinnerSelect">
+        <ownerFrom>android/widget/Spinner</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOView</ownerTo>
+        <from>setOnItemSelectedListener</from>
+        <to>setOnItemSelectedListener</to>
+        <descFrom>(Landroid/widget/AdapterView$OnItemSelectedListener;)V</descFrom>
+        <descTo>(Landroid/widget/AdapterView;Landroid/widget/AdapterView$OnItemSelectedListener;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+    </methodReplacement>
+
+    <!--    &lt;!&ndash; End Basic Input Controls &ndash;&gt;-->
+
+
+    <methodReplacement id="filedelete">
+        <ownerFrom>java/io/File</ownerFrom>
+        <ownerTo>com/ca/android/app/CAMDOFileUtils</ownerTo>
+        <from>delete</from>
+        <to>fileDelete</to>
+        <descFrom>()Z</descFrom>
+        <descTo>(Ljava/io/File;)Z</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>android/support/multidex/</skipFile>
+    </methodReplacement>
+
+
+</CA_SDK>

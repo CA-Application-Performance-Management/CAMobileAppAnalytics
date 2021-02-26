@@ -1,0 +1,30 @@
+1. Create cadxapmsdk folder in plugin root folder. 
+2. Log in to DX App Experience Analytics and go to manage apps -> app settings -> Android -> Gradle Plugin Option
+3. Download the CAAppBundle_SDK.zip file and extract the contents to the cadxapmsdk folder.
+4. Add after-install.js to hooks/android
+5. Create android folder under src and copy build-extra.gradle and CAMAAInitalizer.java to it
+6. Add the following lines to package.json
+    "dependencies": {
+        "line-reader": "^0.4.0"
+    }
+7. Modify plugin.xml adding the following lines
+    <platform name="android">
+        <hook type="after_plugin_install" src="hooks/android/after-install.js"  />
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CAMAAInitializer">
+                <param name="android-package" value="com.ca.cordova.integration.CAMAAInitializer" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name='android.permission.INTERNET' />
+            <uses-permission android:name='android.permission.ACCESS_NETWORK_STATE' />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+        <framework src="src/android/build-extra.gradle" custom="true" type="gradleReference" />
+        <source-file src="cadxapmsdk/ca-maa-android-sdk-release.aar" target-dir="libs/" />
+        <source-file src="cadxapmsdk/android.xml" target-dir="../../../cadxapmsdk" />
+        <source-file src="cordova_camdo.plist" target-dir="../../../cadxapmsdk" />
+        <source-file src="src/android/CAMAAInitializer.java" target-dir="src/com/ca/cordova/integration/CAMAAInitializer" />
+    </platform>
+8. Update README.md
