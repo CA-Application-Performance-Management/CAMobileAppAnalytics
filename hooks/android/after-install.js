@@ -1,11 +1,13 @@
 const lineReader = require('line-reader');
-const fs = require('fs')
+const fs = require('fs');
+
 let buildData = '';
 let repoData = '';
 let dependencyAdded = false;
 let repositoryAdded = false;
 let buildOutputFile = "platforms/android/build.gradle"
 let repoOutputFile = "platforms/android/repositories.gradle"
+
 lineReader.eachLine('platforms/android/build.gradle', (line, last) => {
     buildData+='\n'+line;
     if(!dependencyAdded && line.toString().includes("dependencies {")) {
@@ -20,6 +22,7 @@ lineReader.eachLine('platforms/android/build.gradle', (line, last) => {
         });
     }
 });
+
 lineReader.eachLine('platforms/android/repositories.gradle', (line, last) => {
     repoData+='\n'+line;
     if(!repositoryAdded && line.toString().includes("ext.repos = {")) {
