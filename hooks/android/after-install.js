@@ -11,7 +11,7 @@ let repoOutputFile = "platforms/android/repositories.gradle"
 lineReader.eachLine('platforms/android/build.gradle', (line, last) => {
     buildData+='\n'+line;
     if(!dependencyAdded && line.toString().includes("dependencies {")) {
-        buildData+='\n\t\t'+"classpath 'com.ca.dxapm:sdk-gradle-plugin:20.11.1'";
+        buildData+='\n\t\t\t\t'+"classpath 'com.ca.dxapm:sdk-gradle-plugin:20.11.1'";
         dependencyAdded = true;
     }
     if(last) {
@@ -26,7 +26,7 @@ lineReader.eachLine('platforms/android/build.gradle', (line, last) => {
 lineReader.eachLine('platforms/android/repositories.gradle', (line, last) => {
     repoData+='\n'+line;
     if(!repositoryAdded && line.toString().includes("ext.repos = {")) {
-        repoData+='\n\t\t'+"maven {url 'https://packages.ca.com/apm-agents'}";
+        repoData+='\n\t\t'+"maven {url 'https://packages.broadcom.com/apm-agents'}";
         repositoryAdded = true;
     }
     if(last) {
