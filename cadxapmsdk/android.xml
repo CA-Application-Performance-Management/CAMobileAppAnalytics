@@ -245,6 +245,7 @@
         <descTo>(Landroid/webkit/WebView;Landroid/webkit/WebViewClient;)V</descTo>
         <methodFrom>invoke-virtual</methodFrom>
         <methodTo>invoke-static</methodTo>
+        <skipFile>org/apache/cordova/inappbrowser</skipFile>
     </methodReplacement>
 
     <methodReplacement id="WebViewLoadUrl">
@@ -256,6 +257,7 @@
         <descTo>(Landroid/webkit/WebView;Ljava/lang/String;)V</descTo>
         <methodFrom>invoke-virtual</methodFrom>
         <methodTo>invoke-static</methodTo>
+        <skipFile>org/apache/cordova/inappbrowser</skipFile>
     </methodReplacement>
 
     <methodReplacement id="WebViewPostUrl">

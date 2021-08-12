@@ -28,3 +28,32 @@
         <source-file src="src/android/CAMAAInitializer.java" target-dir="src/com/ca/cordova/integration/CAMAAInitializer" />
     </platform>
 8. Update README.md
+9. Added line:
+
+<skipFile>org/apache/cordova/inappbrowser</skipFile>
+
+to blocks WebViewSetWVC and WebViewLoadUrl in file cadxapmsdk/android.xml:
+
+    <methodReplacement id="WebViewSetWVC">
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <from>setWebViewClient</from>
+        <to>setWebViewClient</to>
+        <descFrom>(Landroid/webkit/WebViewClient;)V</descFrom>
+        <descTo>(Landroid/webkit/WebView;Landroid/webkit/WebViewClient;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>org/apache/cordova/inappbrowser</skipFile>
+    </methodReplacement>
+
+    <methodReplacement id="WebViewLoadUrl">
+        <ownerFrom>android/webkit/WebView</ownerFrom>
+        <ownerTo>com/ca/android/app/CaMDOWebView</ownerTo>
+        <from>loadUrl</from>
+        <to>loadUrl</to>
+        <descFrom>(Ljava/lang/String;)V</descFrom>
+        <descTo>(Landroid/webkit/WebView;Ljava/lang/String;)V</descTo>
+        <methodFrom>invoke-virtual</methodFrom>
+        <methodTo>invoke-static</methodTo>
+        <skipFile>org/apache/cordova/inappbrowser</skipFile>
+    </methodReplacement>
