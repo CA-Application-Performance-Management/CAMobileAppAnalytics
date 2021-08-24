@@ -86,11 +86,11 @@ CaMDOIntegration.logTextMetrics = function(eventObj, callback) {
     if (!eventObj) {
         return;
     }
-
+    
     var key = eventObj.key;
     var value = eventObj.value;
     var attributes = eventObj.attributes;
-
+    
     if (key && value) {
         var dictionary = {};
         dictionary.action = "logTextMetric";
@@ -101,7 +101,7 @@ CaMDOIntegration.logTextMetrics = function(eventObj, callback) {
             dictionary.attributes = attributes;
         }
         sendIntegrationEvent(dictionary);
-
+        
     }
 };
 
@@ -135,11 +135,11 @@ CaMDOIntegration.logNumericMetrics = function(eventObj, callback) {
     if (!eventObj) {
         return;
     }
-
+    
     var key = eventObj.key;
     var value = eventObj.value;
     var attributes = eventObj.attributes;
-
+    
     if (key && value) {
         var dictionary = {};
         dictionary.action = "logNumericMetric";
@@ -150,7 +150,7 @@ CaMDOIntegration.logNumericMetrics = function(eventObj, callback) {
             dictionary.attributes = attributes;
         }
         sendIntegrationEvent(dictionary);
-
+        
     }
 };
 
@@ -172,7 +172,7 @@ CaMDOIntegration.logNumericMetrics = function(eventObj, callback) {
 
 CaMDOIntegration.setCustomerLocation = function(locationObj, callback) {
     if (locationObj) {
-
+        
         var dictionary = {};
         dictionary.action = "setCustomerLocation";
         dictionary.zipcode = locationObj.zipCode
@@ -186,7 +186,7 @@ CaMDOIntegration.setCustomerLocation = function(locationObj, callback) {
     } else {
         //console.error("CaMDOIntegration:: Location is missing.")
     }
-
+    
 };
 
 
@@ -219,11 +219,11 @@ CaMDOIntegration.setCustomerId = function(customerId, callback) {
             dictionary.callback = callback;
         }
         sendIntegrationEvent(dictionary);
-
+        
     } else {
         //console.error("CaMDOIntegration:: sessionInfo is missing.");
     }
-
+    
 };
 
 
@@ -243,7 +243,7 @@ CaMDOIntegration.setCustomerId = function(customerId, callback) {
  */
 
 CaMDOIntegration.setSessionAttribute = function(sessionInfo, callback) {
-
+    
     if (sessionInfo) {
         var dictionary = {};
         dictionary.action = "setSessionAttribute";
@@ -258,11 +258,11 @@ CaMDOIntegration.setSessionAttribute = function(sessionInfo, callback) {
             dictionary.callback = callback;
         }
         sendIntegrationEvent(dictionary);
-
+        
     } else {
         //console.error("CaMDOIntegration:: sessionInfo is missing.");
     }
-
+    
 };
 
 
@@ -279,9 +279,9 @@ CaMDOIntegration.setSessionAttribute = function(sessionInfo, callback) {
  *    },callback);
  *
  *
- */
+ */ 
 CaMDOIntegration.startApplicationTransaction = function(transactionObj, callback) {
-
+    
     if (transactionObj) {
         if (!transactionObj.transactionName) {
             //console.error("CaMDOIntegration:: transactionName is required in transactionObj");
@@ -291,7 +291,7 @@ CaMDOIntegration.startApplicationTransaction = function(transactionObj, callback
         var callback, serviceName;
         dictionary.action = "startApplicationTransaction";
         dictionary.transactionName = transactionObj.transactionName;
-
+        
         if (callback) {
             dictionary.callback = callback;
         }
@@ -302,7 +302,7 @@ CaMDOIntegration.startApplicationTransaction = function(transactionObj, callback
     } else {
         //console.error("CaMDOIntegration:: transactionObj is missing.");
     }
-
+    
 };
 
 
@@ -320,7 +320,7 @@ CaMDOIntegration.startApplicationTransaction = function(transactionObj, callback
  * "serviceName" : "CheckoutScreen",
  * "failure" : "Cart was deleted."
  *    },callback);
-
+ 
  */
 
 CaMDOIntegration.stopApplicationTransaction = function(transactionObj, callback) {
@@ -328,8 +328,8 @@ CaMDOIntegration.stopApplicationTransaction = function(transactionObj, callback)
         var dictionary = {};
         dictionary.action = "stopApplicationTransaction";
         dictionary.transactionName = transactionObj.transactionName;
-
-
+        
+        
         if (!dictionary.transactionName) {
             //console.error("CaMDOIntegration:: transactionName is required in transactionObj");
             return;
@@ -344,7 +344,7 @@ CaMDOIntegration.stopApplicationTransaction = function(transactionObj, callback)
             dictionary.failure = transactionObj.failure;
         }
         sendIntegrationEvent(dictionary);
-
+        
     } else {
         //console.error("CaMDOIntegration:: transactionObj is missing.");
     }
@@ -391,7 +391,7 @@ CaMDOIntegration.isSDKEnabled = function(callback) {
     } else {
         //console.error("CaMDOIntegration:: callback is required to return value from isSDKEnabled() call. ");
     }
-
+    
 };
 
 
@@ -595,14 +595,26 @@ CaMDOIntegration.logNetworkEvent = function(evt,callback) {
  *      CaMDOIntegration.viewLoaded("Shopping","222",callback);
  */
 
-CaMDOIntegration.viewLoaded = function(screenName,screenloadtime,callback) {
+CaMDOIntegration.viewLoaded = function(screenName,screenloadtime,screenCapture,callback) {
     var dictionary = {};
     dictionary.action = "viewLoaded";
     dictionary.screenname = screenName;
     dictionary.screenloadtime=screenloadtime;
+    dictionary.screenCapture=screenCapture;
     dictionary.callback = callback;
     sendIntegrationEvent(dictionary);
 };
+
+CaMDOIntegration.enableScreenShots = function(enable,callback) {
+    var dictionary = {};
+    dictionary.action = "enableScreenShots";
+    dictionary.enable  = enable;
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
 
 /**
  * @function enterPrivateZone
@@ -870,8 +882,8 @@ function parseString(apmCorrAttributes) {
 
 
 function parse(c_name) {
-  var corCookie = "";
-  var cookieMap = undefined;
+    var corCookie = "";
+    var cookieMap = undefined;
     if (document.cookie.length > 0) {
         var cookie = readCookie(c_name);
         if(cookie) {
@@ -883,13 +895,13 @@ function parse(c_name) {
 }
 
 function readCookie(name) {
-//    name += '=';
+    //    name += '=';
     for (var ca = document.cookie.split(/;\s*/), i = ca.length - 1; i >= 0; i--) {
         if (ca[i].indexOf(name) !== -1) {
-             return ca[i].replace(name, '');
+            return ca[i].replace(name, '');
         }
     }
-
+    
 }
 
 

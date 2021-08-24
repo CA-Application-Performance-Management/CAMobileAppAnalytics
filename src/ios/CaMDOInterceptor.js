@@ -1,21 +1,31 @@
 /*global HTMLFormElement window  CaMaaAndroidIntegration */
 /* jshint strict: true */
 
+var corsExcludes = ["www.google-analytics.com"]
+if(!corsExcludes.ignore){
+  corsExcludes.ignore = function(url){
+      try{
+        return corsExcludes.find(ignoreUrl => url.includes(ignoreUrl)) != undefined;
+      } catch (exception) {
+        return false;
+      }
+  }
+}
 
 registerSubmitListener();
 
 if (!XMLHttpRequest.prototype.reallyOpen) {
-
-
+    
+    
     XMLHttpRequest.prototype.reallyOpen = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+    XMLHttpRequest.prototype.open = function(method, url) {
         this.camaa_start = new Date().getTime();
         this.camaa_req_url = url;
         this.reallyOpen.apply(this, Array.prototype.slice.call(arguments));
-
+        
     };
-
-
+    
+    
     XMLHttpRequest.prototype.reallySend = XMLHttpRequest.prototype.send;
     XMLHttpRequest.prototype.send = function(body) {
         try {
@@ -25,23 +35,26 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
                 this.camaa_body_outBytes = 0;
             }
             this.addEventListener("readystatechange", function() {
-
-                if (this.readyState === 4) {
-                    this.camaa_end = new Date().getTime();
-                    window.logEvent(this);
-                }
-            }, false);
+                                  
+                                  if (this.readyState === 4) {
+                                  this.camaa_end = new Date().getTime();
+                                  window.logEvent(this);
+                                  }
+                                  }, false);
             if(typeof CaMaaAndroidIntegration != 'undefined') {
+                if(!corsExcludes.ignore(this.camaa_req_url)){
+                
                 var apmHeaderString = "" + CaMaaAndroidIntegration.getAPMHeader();
                 var apmHeader = apmHeaderString.split("||");
                 
                 if (apmHeader.length === 2) {
                     this.setRequestHeader(apmHeader[0], apmHeader[1]);
                 }
+                }
             }
-
+            
         } catch (exception) {
-
+            
         } finally {
             this.reallySend.apply(this, Array.prototype.slice.call(arguments));
         }
@@ -50,9 +63,9 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
 
 function registerSubmitListener() {
     window.addEventListener('submit', function(e) {
-        interceptor(e);
-    }, true);
-
+                            interceptor(e);
+                            }, true);
+    
 }
 
 function interceptor(e) {
@@ -69,21 +82,21 @@ function interceptor_onsubmit(f) {
             parValue = f.elements[i].value;
             parType = f.elements[i].type;
             obj = {
-                name: parName,
-                value: parValue
+            name: parName,
+            value: parValue
             };
             jsonArr.push(obj);
         }
         var enctype = null;
         var http_method =null;
         var action_url=null;
-
+        
         if(f.attributes['enctype']){
             if (f.attributes['enctype'].value){
                 enctype=f.attributes['enctype'].value;
             }else if(f.attributes['enctype'].nodeValue){
                 enctype=f.attributes['enctype'].nodeValue;
-             }
+            }
         }
         if(f.attributes['method']){
             if(f.attributes['method'].value){
@@ -103,7 +116,7 @@ function interceptor_onsubmit(f) {
             CaMaaAndroidIntegration.logFormRequest(action_url, f.action, http_method, enctype, JSON.stringify(jsonArr));
         }
     } catch (exception) {
-
+        
     }
 }
 
@@ -183,7 +196,7 @@ function SendMAAEventToUIWebView(dictionaryObj) {
     }
     window.maaurl = "camaa://" + JSON.stringify(dictionaryObj);
     window.location = "camaa://" + JSON.stringify(dictionaryObj);
-
+    
 }
 /**
  * @private
@@ -208,7 +221,7 @@ var sendMAASDKEvent = function(nativeCallInfo) {
     //UI Webview
     else if (window.camaawebview) { // if in ios webview
         preProcess(nativeCallInfo,true);
-
+        
         var executeAfter = 400;
         if(!window.prevCall){
             window.prevCall = 0;
@@ -218,9 +231,9 @@ var sendMAASDKEvent = function(nativeCallInfo) {
         if(window.prevCall > 3000){
             window.prevCall = 0
         }
-
+        
         window.setTimeout(function(){SendMAAEventToUIWebView(nativeCallInfo)},window.prevCall );
-
+        
         //SendMAAEventToUIWebView(nativeCallInfo);
     }
     //Do not call , just call callback passed.
@@ -233,7 +246,7 @@ var sendMAASDKEvent = function(nativeCallInfo) {
 };
 
 /**
-
+ 
  * @private
  * Creates unique name global function and assign user passed callback function
  * to that.
@@ -249,13 +262,13 @@ var preProcess = function(nativeCallInfo,isIOS) {
             //this is the name of callback function native SDK will use.
             nativeCallInfo.callbackfn_name = callbackfn_name;
         }
-
+        
         if(isIOS && nativeCallInfo.quality) {
             var intQuality = parseInt(nativeCallInfo.quality);
             var iosQuality = (intQuality/100)+"";
             nativeCallInfo.quality = iosQuality;
         }
-
+        
     } catch (e) {}
 };
 
@@ -288,7 +301,7 @@ window.onerror = function(message, url, lineNumber,columnNumber,errorObj) {
     dictionary.key = "jserror";
     dictionary.value = message;
     var stacktrace = undefined;
-    if(errorObj){
+    if(errorObj["stack"]){
         stacktrace = errorObj["stack"].toString();
     }
     var loc = window.location;
@@ -305,7 +318,7 @@ window.onerror = function(message, url, lineNumber,columnNumber,errorObj) {
         dictionary.attributes = {"l":lineNumber,"u":url ,"p": loc};
     }
     sendIntegrationEvent(dictionary);
-
+    
     return true;
 };
 
@@ -375,11 +388,11 @@ function validateResource(resource){
 }
 
 /***
-TODO: Functions that are not used
-*/
+ TODO: Functions that are not used
+ */
 
 function isNonEmptyString(str) {
-  return typeof str == 'string' && !!str.trim();
+    return typeof str == 'string' && !!str.trim();
 }
 
 function parseString(apmCorrAttributes) {
@@ -400,8 +413,8 @@ function parseString(apmCorrAttributes) {
 
 
 function parse(c_name) {
-  var corCookie = "";
-  var cookieMap = undefined;
+    var corCookie = "";
+    var cookieMap = undefined;
     if (document.cookie.length > 0) {
         var cookie = readCookie(c_name);
         if(cookie) {
@@ -413,22 +426,22 @@ function parse(c_name) {
 }
 
 function readCookie(name) {
-//    name += '=';
+    //    name += '=';
     for (var ca = document.cookie.split(/;\s*/), i = ca.length - 1; i >= 0; i--) {
         if (ca[i].indexOf(name) !== -1) {
-             return ca[i].replace(name, '');
+            return ca[i].replace(name, '');
         }
     }
-
+    
 }
 
 
 function encode_utf8(s) {
-  return unescape(encodeURIComponent(s));
+    return unescape(encodeURIComponent(s));
 }
 
 function decode_utf8(s) {
-  return decodeURIComponent(unescape(s));
+    return decodeURIComponent(unescape(s));
 }
 
 

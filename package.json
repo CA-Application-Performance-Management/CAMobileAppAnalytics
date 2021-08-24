@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-camaa",
-  "version": "21.1.1",
+  "version": "21.6.0.101",
   "description": "CAMAA Cordova library plugin. ",
   "cordova": {
     "id": "cordova-plugin-camaa",
