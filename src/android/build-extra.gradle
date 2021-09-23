@@ -1,0 +1,9 @@
+apply plugin: 'com.ca.dxapm.sdk.gradle.plugin'
+
+cadxapmsdk {
+    plist = rootProject.file('cadxapmsdk/cordova_camdo.plist')
+}
+
+dependencies {
+	implementation files('libs/ca-maa-android-sdk-release.aar')
+}

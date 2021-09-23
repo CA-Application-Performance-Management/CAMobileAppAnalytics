@@ -55,4 +55,25 @@
 
 
     </platform>
+
+    <platform name="android">
+        <hook type="after_plugin_install" src="hooks/android/after-install.js"  />
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CAMAAInitializer">
+                <param name="android-package" value="com.ca.cordova.integration.CAMAAInitializer" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name='android.permission.INTERNET' />
+            <uses-permission android:name='android.permission.ACCESS_NETWORK_STATE' />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+        <framework src="src/android/build-extra.gradle" custom="true" type="gradleReference" />
+        <source-file src="cadxapmsdk/ca-maa-android-sdk-release.aar" target-dir="libs/" />
+        <source-file src="cadxapmsdk/android.xml" target-dir="../../../cadxapmsdk" />
+        <source-file src="cordova_camdo.plist" target-dir="../../../cadxapmsdk" />
+        <source-file src="src/android/CAMAAInitializer.java" target-dir="src/com/ca/cordova/integration/CAMAAInitializer" />
+    </platform>
+
 </plugin>
