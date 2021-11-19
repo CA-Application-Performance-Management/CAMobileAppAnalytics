@@ -1,3 +1,8 @@
+Updated to version 21.6.0 of the ca-maa-android-sdk-release.aar library (from CAAppBundle_SDK.zip, downloaded from the app config page in AXA)
+
+
+Modifications
+
 1. Create cadxapmsdk folder in plugin root folder. 
 2. Log in to DX App Experience Analytics and go to manage apps -> app settings -> Android -> Gradle Plugin Option
 3. Download the CAAppBundle_SDK.zip file and extract the contents to the cadxapmsdk folder.
