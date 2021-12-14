@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-camaa"  version="21.9.1-beta.2">
+        id="cordova-plugin-camaa"  version="21.11.0-beta.1">
     <name>CAMAA</name>
     <description>CAMAA Cordova library plugin. </description>
     <license>Apache 2.0</license>
@@ -53,6 +53,17 @@
 
         <plugins-plist key="NSLocationAlwaysUsageDescription" string="Usage statistic information" />
 
+
+    </platform>
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CAMAAInitializer" >
+                <param name="android-package" value="CAMAAInitializer"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/CAMAAInitializer.java" target-dir="src" />
+        
 
     </platform>
 </plugin>

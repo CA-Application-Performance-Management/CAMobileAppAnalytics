@@ -1,11 +1,12 @@
 {
   "name": "cordova-plugin-camaa",
-  "version": "21.9.1-beta.2",
+  "version": "21.11.0-beta.1",
   "description": "CAMAA Cordova library plugin. ",
   "cordova": {
     "id": "cordova-plugin-camaa",
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   },
   "repository": {
@@ -17,7 +18,8 @@
     "CA Mobile App Analytics",
     "Broadcom",
     "ecosystem:cordova",
-    "cordova-ios"
+    "cordova-ios",
+    "cordova-android"
   ],
   "author": "CA Technologies (A Broadcom Company)",
   "license": "Apache 2.0"
