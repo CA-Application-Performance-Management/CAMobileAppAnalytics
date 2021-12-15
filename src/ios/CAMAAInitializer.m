@@ -325,14 +325,14 @@ CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandSta
     [self.commandDelegate runInBackground:^{
         [CAMDOReporter uploadEventsWithCompletionHandler:^(NSDictionary *response, NSError *error) {
 
-            CDVPluginResult *pluginResult;//=[CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-            if (error) {
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.description];
-            } else {
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:response];
-            }
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
+//            CDVPluginResult *pluginResult;//=[CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+//            if (error) {
+//                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:error.description];
+//            } else {
+//                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:response];
+//            }
+//            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            handleCompletionWith(response,error);
         }];
     }];
 }
