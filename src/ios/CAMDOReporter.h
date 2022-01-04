@@ -338,6 +338,10 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
 
 - (BOOL) startApplicationTransactionAuto:(NSString *) transactionName withServiceName:(NSString *)  serviceName;
 - (BOOL) stopApplicationTransactionAuto:(NSString *) transactionName;
+
+#pragma mark UI Components event
++ (void) logUIEvent:(NSString *) eventType withValue:(NSString *) value;
+
 @end
 
 #endif /* CAMDOReporter_h */

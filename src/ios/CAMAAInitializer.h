@@ -44,6 +44,7 @@
 -(void) logTextMetric:(CDVInvokedUrlCommand*) command;
 -(void) logNumericMetric:(CDVInvokedUrlCommand*) command;
 -(void) uploadEventsWithCompletionHandler:(CDVInvokedUrlCommand*) command;
+-(void) logUIEvent:(CDVInvokedUrlCommand*) command;
 #pragma mark deprecated
 
 @end

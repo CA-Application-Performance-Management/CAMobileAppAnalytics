@@ -6,6 +6,16 @@ function CAMAA() {}
 /**
  *  This is the interface
  */
+CAMAA.prototype.UIEventType = {
+                    CAMAA_EVENT_BUTTON_PRESSED:"button_pressed",
+                    CAMAA_EVENT_DATE_PICKER_VIEW_SELECTED:"date_picker_selected",
+                    CAMAA_EVENT_PAGE_CHANGED:"page_changed",
+                    CAMAA_EVENT_SEGMENTED_CONTROL_PRESSED:"segment_control_pressed",
+                    CAMAA_EVENT_SLIDER_MOVED:"slider_moved",
+                    CAMAA_EVENT_STEPPER_PRESSED:"stepper_pressed",
+                    CAMAA_EVENT_SWITCH_PRESSED:"switch_pressed"
+                }
+
 CAMAA.prototype.enableSDK = function(success,failure){};
 CAMAA.prototype.disableSDK  = function(success,failure){};
 CAMAA.prototype.isSDKEnabled  = function(success,failure){};
@@ -39,7 +49,7 @@ CAMAA.prototype.logNetworkEvent = function(strURL,intStatus,intResponseTime,intI
 CAMAA.prototype.logTextMetric = function(strName,strVal,dictionaryAttributes,success,failure){};
 CAMAA.prototype.logNumericMetric = function(strName,doubleVal,dictionaryAttributes,success,failure){};
 CAMAA.prototype.uploadEventsWithCompletionHandler = function(success,failure){};
-
+CAMAA.prototype.logUIEvent = function(strName,strName,success,failure){};
 
 /**
  * This is the implementation
@@ -80,5 +90,5 @@ CAMAA.prototype.viewLoaded = function(p1,p2,success,failure){cordova.exec(succes
 CAMAA.prototype.logTextMetric = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logTextMetric', [p1,p2,p3]);};
 CAMAA.prototype.logNumericMetric = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logNumericMetric', [p1,p2,p3]);};
 CAMAA.prototype.logNetworkEvent = function(p1,p2,p3,p4,p5,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logNetworkEvent', [p1,p2,p3,p4,p5]);};
-
+CAMAA.prototype.logUIEvent = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logUIEvent', [p1,p2]);};
 module.exports = new CAMAA();

@@ -21,8 +21,14 @@ CaMDOIntegration = {}
 
 
 CaMDOIntegration.quality = {high:"30",medium:"20",low:"15" ,default_:"-1"};
-
-
+CaMDOIntegration.UIEventType = {
+                    CAMAA_EVENT_BUTTON_PRESSED:"button_pressed",
+                    CAMAA_EVENT_DATE_PICKER_VIEW_SELECTED:"date_picker_selected",
+                    CAMAA_EVENT_PAGE_CHANGED:"page_changed",
+                    CAMAA_EVENT_SEGMENTED_CONTROL_PRESSED:"segment_control_pressed",
+                    CAMAA_EVENT_SLIDER_MOVED:"slider_moved",
+                    CAMAA_EVENT_STEPPER_PRESSED:"stepper_pressed",
+                    CAMAA_EVENT_SWITCH_PRESSED:"switch_pressed"};
 /**
  * @function isScreenshotPolicyEnabled
  * @description Returns TRUE if screenshots are enabled by policy.  Otherwise return FALSE
@@ -734,6 +740,27 @@ CaMDOIntegration.setCrashFeedback = function (feedback) {
     sendIntegrationEvent(dictionary);
 }
 
+
+/**
+ * @function logUIEvent
+ * @description Logs a UI elements event.
+ * @param {CaMDOIntegration.UIEventType} eventType - Type of UI Element. You can use CaMDOIntegration.UIEventType.CAMAA_EVENT_BUTTON_PRESSED, CaMDOIntegration.UIEventType.CAMAA_EVENT_DATE_PICKER_VIEW_SELECTED, CaMDOIntegration.UIEventType.CAMAA_EVENT_PAGE_CHANGED, CaMDOIntegration.UIEventType.CAMAA_EVENT_SEGMENTED_CONTROL_PRESSED,
+     CaMDOIntegration.UIEventType.CAMAA_EVENT_SLIDER_MOVED, CaMDOIntegration.UIEventType.CAMAA_EVENT_STEPPER_PRESSED,
+     CaMDOIntegration.UIEventType.CAMAA_EVENT_SWITCH_PRESSED
+ * @param {string} value - value of the ui element. Example: Button title, Data Picker date, Current page from page control, selected segemnt from Segmented control, slider valu, stepper value, or switch on/off state
+ * @param {callback} callback - callback.
+ *      @example
+ *      CaMDOIntegration.logUIEvent(CaMDOIntegration.UIEventType.CAMAA_EVENT_BUTTON_PRESSED,"Button title",callback);
+ */
+
+CaMDOIntegration.logUIEvent = function(eventType,value,callback) {
+    var dictionary = {};
+    dictionary.action = "logUIEvent";
+    dictionary.eventType = eventType;
+    dictionary.value = value;
+    dictionary.callback = callback;
+    sendIntegrationEvent(dictionary);
+};
 
 //************************ Integration functions ******************************* //
 

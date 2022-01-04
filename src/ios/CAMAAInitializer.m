@@ -337,7 +337,14 @@ CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandSta
 }
 
 
-
+-(void) logUIEvent:(CDVInvokedUrlCommand*) command {
+    NSString *res = [command.arguments objectAtIndex:0];
+    NSString *res2 = [command.arguments objectAtIndex:1];
+    [self.commandDelegate runInBackground:^{
+        [CAMDOReporter logUIEvent:res withValue:res2];
+        successfulCall();
+    }];
+}
 
 
 @end
