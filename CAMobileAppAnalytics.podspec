@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '21.8.1.0'
+  s.version          = '21.11.0.0'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
@@ -26,6 +26,6 @@ Pod::Spec.new do |s|
   s.vendored_libraries = 'CAMobileAppAnalytics/**/*.a'
   
   s.libraries = 'c++', 'z', 'sqlite3'
-  s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit', 'WatchConnectivity'
+  s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
   s.requires_arc = true
 end
