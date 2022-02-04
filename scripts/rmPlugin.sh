@@ -104,21 +104,24 @@ ConfigFile="$PROJECT_DIR/../quasar.conf.js"
 BootFolder="$PROJECT_DIR/../src/boot/"
 
 
-cd "${BootFolder}"
-rm -rf "dxaxa.js"
+if [ -f "${ConfigFile}" ]; then
+    cd "${BootFolder}"
+    rm -rf "dxaxa.js"
 
-dxaxalineNum=($(grep -n "'dxaxa.*" "${ConfigFile}" | cut -f1 -d:))
-echo "$dxaxalineNum"
+    dxaxalineNum=($(grep -n "'dxaxa.*" "${ConfigFile}" | cut -f1 -d:))
+    echo "$dxaxalineNum"
 
-if (( ${#dxaxalineNum[@]} > 0))
-then
-    lineNums=''
-    for i in ${dxaxalineNum[@]}
-    do 
-        lineNums="$lineNums${i}d;"
-    done
+    if (( ${#dxaxalineNum[@]} > 0))
+    then
+        lineNums=''
+        for i in ${dxaxalineNum[@]}
+        do
+            lineNums="$lineNums${i}d;"
+        done
 
-    sed -e $lineNums "$ConfigFile" > tmp
-    cp tmp "$ConfigFile"
-    rm tmp
+        sed -e $lineNums "$ConfigFile" > tmp
+        cp tmp "$ConfigFile"
+        rm tmp
+    fi
 fi
+
