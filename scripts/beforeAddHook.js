@@ -8,8 +8,10 @@ Look @https://cordova.apache.org/docs/en/latest/guide/appdev/hooks/ for more det
  */
 module.exports = function(context) {
     var projectRoot = context.opts.projectRoot;
+    projectRoot = projectRoot.replace(/(\s+)/g, '\\$1')
     // could just use a regex
     var scriptLocation = context.scriptLocation.split("/").slice(0,context.scriptLocation.split("/").length - 1).join("/") + "/";
+    scriptLocation = scriptLocation.replace(/(\s+)/g, '\\$1')
     // remove previous version
     // exec("cordova plugin remove CAMAA",function(e,s,std){
     //  this is causing errors
