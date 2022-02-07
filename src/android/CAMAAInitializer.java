@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 
 /***
@@ -378,7 +379,19 @@ public class CAMAAInitializer extends CordovaPlugin {
   public void logTextMetric(JSONArray args, CallbackContext callbackContext) {
     Log.i(TAG, "@logTextMetric  ");
     try {
-      CaMDOIntegration.logTextMetric("" + args.get(0), (String) args.get(1), (Map) args.get(2), new CaMDOCallback(new Handler()) {
+       Map<String, String> attribs = new HashMap<>();
+      try {
+        JSONObject temp = args.getJSONObject(2);
+        Iterator<String> itr = temp.keys();
+        while (itr.hasNext()) {
+          String key = itr.next();
+          attribs.put(key, temp.getString(key));
+        }
+
+      } catch (Exception d1) {
+        Log.i(TAG, "@logTextMetric  3rd agr is not a valid. Follow {'key1':value, 'key2':value, .. } format");
+      }
+      CaMDOIntegration.logTextMetric("" + args.get(0), (String) args.get(1), attribs, new CaMDOCallback(new Handler()) {
         @Override
         public void onError(int i, Exception e) {
           callbackContext.error("Error sending logTextMetric event: Reason " + e);
@@ -398,7 +411,19 @@ public class CAMAAInitializer extends CordovaPlugin {
   public void logNumericMetric(JSONArray args, CallbackContext callbackContext) {
     Log.i(TAG, "@logNumericMetric  ");
     try {
-      CaMDOIntegration.logNumericMetric("" + args.get(0), (Double) args.get(1), (Map) args.get(2), new CaMDOCallback(new Handler()) {
+       Map<String, String> attribs = new HashMap<>();
+      try {
+        JSONObject temp = args.getJSONObject(2);
+        Iterator<String> itr = temp.keys();
+        while (itr.hasNext()) {
+          String key = itr.next();
+          attribs.put(key, temp.getString(key));
+        }
+
+      } catch (Exception d1) {
+        Log.i(TAG, "@logNumericMetric  3rd agr is not a valid. Follow {'key1':value, 'key2':value, .. } format");
+      }
+      CaMDOIntegration.logNumericMetric("" + args.get(0),  Double.parseDouble(""+args.get(1)), attribs, new CaMDOCallback(new Handler()) {
         @Override
         public void onError(int i, Exception e) {
           callbackContext.error("Error sending logNumericMetric event: Reason " + e);
