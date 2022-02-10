@@ -42,6 +42,7 @@ public class CAMAAInitializer extends CordovaPlugin {
   public static String ACTION_SET_CUSTOMER_LOCATION = "setCustomerLocation";
   public static String ACTION_START_APP_TRANSACTION = "startApplicationTransactionWithName";
   public static String ACTION_STOP_APP_TRANSACTION = "stopApplicationTransactionWithName";
+  public static String ACTION_STOP_APP_TRANSACTION_WITH_FAILURE = "stopApplicationTransactionWithNameAndFailure";
   public static String ACTION_START_APP_TRANSACTION_WITH_NAME_AND_SERVICE = "startApplicationTransactionWithNameWithServiceName";
   public static String ACTION_IS_SCREENSHOT_ENABLED_BY_POLICY = "isScreenshotPolicyEnabled";
   public static String ACTION_IGNORE_VIEW = "ignoreView";
@@ -92,6 +93,8 @@ public class CAMAAInitializer extends CordovaPlugin {
       startApplicationTransactionWithName(args, callbackContext);
     } else if (action.equals(ACTION_STOP_APP_TRANSACTION)) {
       stopApplicationTransactionWithName(args, callbackContext);
+    } else if (action.equals(ACTION_STOP_APP_TRANSACTION_WITH_FAILURE)) {
+      stopApplicationTransactionWithNameAndFailure(args, callbackContext);
     } else if (action.equals(ACTION_START_APP_TRANSACTION_WITH_NAME_AND_SERVICE)) {
       startApplicationTransactionWithNameWithServiceName(args, callbackContext);
     } else if (action.equals(ACTION_IS_SCREENSHOT_ENABLED_BY_POLICY)) {
@@ -272,7 +275,7 @@ public class CAMAAInitializer extends CordovaPlugin {
   }
 
   public void startApplicationTransactionWithNameWithServiceName(JSONArray args, CallbackContext callbackContext) {
-    Log.i(TAG, "@stopApplicationTransactionWithName  ");
+    Log.i(TAG, "@startApplicationTransactionWithNameWithServiceName  ");
     try {
       CaMDOIntegration.startApplicationTransaction("" + args.get(0), "" + args.get(1), new CaMDOCallback(new Handler()) {
         @Override
@@ -293,7 +296,22 @@ public class CAMAAInitializer extends CordovaPlugin {
 
   public void stopApplicationTransactionWithNameAndFailure(JSONArray args, CallbackContext callbackContext) {
     Log.i(TAG, "@stopApplicationTransactionWithNameAndFailure  ");
-    callbackContext.error("Not supported in Android");
+    try {
+      CaMDOIntegration.stopApplicationTransaction("" + args.get(0), "" + args.get(1), new CaMDOCallback(new Handler()) {
+        @Override
+        public void onError(int i, Exception e) {
+          callbackContext.error("Error stopping transaction. Reason " + e);
+        }
+
+        @Override
+        public void onSuccess(Bundle bundle) {
+          callbackContext.success();
+        }
+      });
+
+    } catch (Exception e) {
+      callbackContext.error("Error stopping transaction with failure. Reason " + e);
+    }
   }
 
   public void isScreenshotPolicyEnabled(JSONArray args, CallbackContext callbackContext) {
