@@ -40,7 +40,6 @@
 -(void) ignoreViews:(CDVInvokedUrlCommand*) command;
 -(void) sendScreenShot:(CDVInvokedUrlCommand*) command;
 -(void) viewLoaded:(CDVInvokedUrlCommand*) command;
--(void) viewLoadedWithScreenshot:(CDVInvokedUrlCommand*) command;
 
 -(void) logNetworkEvent:(CDVInvokedUrlCommand*) command;
 -(void) logTextMetric:(CDVInvokedUrlCommand*) command;
