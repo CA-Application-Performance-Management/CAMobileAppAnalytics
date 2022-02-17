@@ -27,7 +27,7 @@ if [ -z "$res" ];  then
 fi
 
 cd ../
-PLUGIN_DIR="$PWD"/
+PLUGIN_DIR="$PWD"
 PROJECT_DIR=''
 
 if [ -z "$1" ]; then
@@ -91,20 +91,10 @@ bootFile=$PROJECT_DIR"/../src/boot/dxaxa.js"
 if [ -f "${ConfigFile}" ] && [ ! -f "${bootFile}" ]; then
 
     quasar new boot dxaxa.js
-
     echo "" > ${bootFile}
-    echo "import { boot } from 'quasar/wrappers'
+	dxaxaBootFile="$PLUGIN_DIR/src/dxaxa.js"
+	cat "$dxaxaBootFile" > "$bootFile"
 
-export default boot(async ({ app, router}) => {
-  router.afterEach((to, from) => {
-    setTimeout(function() {
-      CaMDOIntegration.viewLoaded(to.name ? to.name : to.path,0.25,\"YES\",function (action,returnValue,error) {
-      })
-    }, 200)
-  })
-})
-" > ${bootFile}
-	
 	#add 'dxaxa.js' in quasar.config.js under boot
 	bootArray=($(sed '/boot: /,/]/!d' "$ConfigFile"))
 	if (( ${#bootArray[@]} > 0)) 

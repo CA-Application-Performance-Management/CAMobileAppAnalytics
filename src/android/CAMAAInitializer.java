@@ -53,6 +53,7 @@ public class CAMAAInitializer extends CordovaPlugin {
   public static String ACTION_LOG_TEXT_METRIC = "logTextMetric";
   public static String ACTION_LOG_NUMERIC_METRIC = "logNumericMetric";
   public static String ACTION_UPLOAD_EVENT = "uploadEventsWithCompletionHandler";
+  public static String ACTION_FORCE_PAGE_LOAD_EVENT = "forcePageLoadEvent";
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -115,6 +116,8 @@ public class CAMAAInitializer extends CordovaPlugin {
       logNumericMetric(args, callbackContext);
     } else if (action.equals(ACTION_UPLOAD_EVENT)) {
       uploadEventsWithCompletionHandler(args, callbackContext);
+    } else if (action.equals(ACTION_FORCE_PAGE_LOAD_EVENT)) {
+      forcePageLoadEvent(args, callbackContext);
     } else {
       Log.i(TAG, "@execute unknown action/command: " + action);
     }
@@ -475,6 +478,16 @@ public class CAMAAInitializer extends CordovaPlugin {
 
     } catch (Exception e) {
       callbackContext.error("Error in uploadEvents: Reason " + e);
+    }
+  }
+
+  public void forcePageLoadEvent(JSONArray args, CallbackContext callbackContext) {
+    Log.i(TAG, "@forcePageLoadEvent  ");
+    try {
+      CaMDOIntegration.forcePageLoadEvent(""+args.get(0));
+
+    } catch (Exception e) {
+      callbackContext.error("Error in forcePageLoadEvent: Reason " + e);
     }
   }
 

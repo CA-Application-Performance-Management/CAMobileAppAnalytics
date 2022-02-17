@@ -45,11 +45,13 @@ CAMAA.prototype.ignoreView = function(strView,success,failure){};
 CAMAA.prototype.ignoreViews = function(listOfStringNames,success,failure){};
 CAMAA.prototype.sendScreenShot = function(strName,floatQuality,success,failure){};
 CAMAA.prototype.viewLoaded = function(strName,floatTime,success,failure){};
+CAMAA.prototype.viewLoadedWithScreenshot = function(strName,floatTime,screenCapture,success,failure){};
 CAMAA.prototype.logNetworkEvent = function(strURL,intStatus,intResponseTime,intIncomingBytes,intOutgoingBytes,success,failure){};
 CAMAA.prototype.logTextMetric = function(strName,strVal,dictionaryAttributes,success,failure){};
 CAMAA.prototype.logNumericMetric = function(strName,doubleVal,dictionaryAttributes,success,failure){};
 CAMAA.prototype.uploadEventsWithCompletionHandler = function(success,failure){};
 CAMAA.prototype.logUIEvent = function(strName,strName,success,failure){};
+CAMAA.prototype.forcePageLoadEvent = function(pageName,success,failure){};
 
 /**
  * This is the implementation
@@ -86,9 +88,12 @@ CAMAA.prototype.stopApplicationTransactionWithNameAndFailure = function(p1,p2,su
 CAMAA.prototype.setCustomerLocationWithCountry = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'setCustomerLocationWithCountry', [p1,p2]);};
 CAMAA.prototype.sendScreenShot = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'sendScreenShot', [p1,p2]);};
 CAMAA.prototype.viewLoaded = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'viewLoaded', [p1,p2]);};
+CAMAA.prototype.viewLoadedWithScreenshot = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'viewLoadedWithScreenshot', [p1,p2,p3]);};
 
 CAMAA.prototype.logTextMetric = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logTextMetric', [p1,p2,p3]);};
 CAMAA.prototype.logNumericMetric = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logNumericMetric', [p1,p2,p3]);};
 CAMAA.prototype.logNetworkEvent = function(p1,p2,p3,p4,p5,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logNetworkEvent', [p1,p2,p3,p4,p5]);};
 CAMAA.prototype.logUIEvent = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logUIEvent', [p1,p2]);};
+
+CAMAA.prototype.forcePageLoadEvent = function(p1,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'forcePageLoadEvent', [p1]);};
 module.exports = new CAMAA();

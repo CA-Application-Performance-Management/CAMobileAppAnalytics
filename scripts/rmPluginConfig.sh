@@ -27,7 +27,7 @@ usage  "This script should be called by the Cordova hook!"
 fi
 
 cd ../
-PLUGIN_DIR="$PWD"/
+
 PROJECT_DIR=''
 
 if [ -z "$1" ]; then
