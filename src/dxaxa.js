@@ -4,14 +4,14 @@ import { Platform } from 'quasar'
 export default boot(async ({ app, router}) => {
 
 
-  router.beforeEach((to, from) => {
-    setTimeout(function() {
-      console.log("boot-beforeEach "+to.name+", "+to.path+", isAndroid: "+Platform.is.android)
-      if (Platform.is.android) {
-              window.camaa.forcePageLoadEvent(to.name ? to.name : to.path)
-      }      
-    }, 5)
-  })
+  // router.beforeEach((to, from) => {
+  //   setTimeout(function() {
+  //     console.log("boot-beforeEach "+to.name+", "+to.path+", isAndroid: "+Platform.is.android)
+  //     if (Platform.is.android) {
+  //             window.camaa.forcePageLoadEvent(to.name ? to.name : to.path)
+  //     }      
+  //   }, 5)
+  // })
 
   router.afterEach((to, from) => {
     setTimeout(function() {
