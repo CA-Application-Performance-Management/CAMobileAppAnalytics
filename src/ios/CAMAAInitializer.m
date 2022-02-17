@@ -272,8 +272,9 @@ CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandSta
     isArgValidNumber(command, 1);
     NSString *res = [command.arguments objectAtIndex:0];
     NSNumber *res2 = [command.arguments objectAtIndex:1];
+    NSString *res3 = [command.arguments objectAtIndex:2];
 
-    [CAMDOReporter viewLoaded:res loadTime:[res2 floatValue] completionHandler:^(BOOL completed, NSError *error) {
+    [CAMDOReporter viewLoaded:res loadTime:[res2 floatValue] screenShot:[res3 boolValue] completionHandler:^(BOOL completed, NSError *error) {
         handleCompletionWith(completed,error);
     }];
 }

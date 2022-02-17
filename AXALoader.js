@@ -44,7 +44,7 @@ CAMAA.prototype.setCustomerLocationWithCountry = function(strLoc,strCountry,succ
 CAMAA.prototype.ignoreView = function(strView,success,failure){};
 CAMAA.prototype.ignoreViews = function(listOfStringNames,success,failure){};
 CAMAA.prototype.sendScreenShot = function(strName,floatQuality,success,failure){};
-CAMAA.prototype.viewLoaded = function(strName,floatTime,success,failure){};
+CAMAA.prototype.viewLoaded = function(strName,floatTime,screenCapture,success,failure){};
 CAMAA.prototype.viewLoadedWithScreenshot = function(strName,floatTime,screenCapture,success,failure){};
 CAMAA.prototype.logNetworkEvent = function(strURL,intStatus,intResponseTime,intIncomingBytes,intOutgoingBytes,success,failure){};
 CAMAA.prototype.logTextMetric = function(strName,strVal,dictionaryAttributes,success,failure){};
@@ -87,7 +87,7 @@ CAMAA.prototype.startApplicationTransactionWithNameWithServiceName = function(p1
 CAMAA.prototype.stopApplicationTransactionWithNameAndFailure = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'stopApplicationTransactionWithNameAndFailure', [p1,p2]);};
 CAMAA.prototype.setCustomerLocationWithCountry = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'setCustomerLocationWithCountry', [p1,p2]);};
 CAMAA.prototype.sendScreenShot = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'sendScreenShot', [p1,p2]);};
-CAMAA.prototype.viewLoaded = function(p1,p2,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'viewLoaded', [p1,p2]);};
+CAMAA.prototype.viewLoaded = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'viewLoaded', [p1,p2,p3]);};
 CAMAA.prototype.viewLoadedWithScreenshot = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'viewLoadedWithScreenshot', [p1,p2,p3]);};
 
 CAMAA.prototype.logTextMetric = function(p1,p2,p3,success,failure){cordova.exec(success, failure, 'CAMAAInitializer', 'logTextMetric', [p1,p2,p3]);};
