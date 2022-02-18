@@ -596,9 +596,11 @@ CaMDOIntegration.logNetworkEvent = function(evt,callback) {
  * @function viewLoaded
  * @description Adds a lifecycle event that page or screen is loaded , Takes screenshot of current screen and adds an event to analytics.
  * @param {string} screenName - name of the screen for which screenshot will be taken.
+ * @param {number} screenloadtime -  screenloadtime is the time it took to load the view
+ * @param {bool} screenCapture - screenCapture is a flag to indicate whether to capture the curren screen
  * @param {callback} callback - callback.
  *      @example
- *      CaMDOIntegration.viewLoaded("Shopping","222",callback);
+ *      CaMDOIntegration.viewLoaded("Shopping",0.25,true,callback);
  */
 
 CaMDOIntegration.viewLoaded = function(screenName,screenloadtime,screenCapture,callback) {
