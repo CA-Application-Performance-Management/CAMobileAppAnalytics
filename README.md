@@ -10,7 +10,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 
 ## Requirements
 1. Xcode 11 or higher
-2. iOS 8.0 or higher
+2. iOS 9.0 or higher
 
 ## Integration
 Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode project using CocoaPods
