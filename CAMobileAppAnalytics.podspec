@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.platform         =:ios, '9.0'
-  s.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
-  s.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+  s.source_files = 'CAMobileAppAnalytics/libCAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+  s.public_header_files = 'CAMobileAppAnalytics/libCAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
   s.resources = 'CAMobileAppAnalytics/**/*.js'
-  s.vendored_frameworks = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
+  s.vendored_frameworks = 'CAMobileAppAnalytics/libCAMobileAppAnalytics.xcframework'
   
   s.libraries = 'c++', 'z', 'sqlite3'
   s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
