@@ -28,18 +28,5 @@ module.exports = function(context) {
             if(stderr){console.log("stderr : " + stderr); resolve();};
         });
     }).then (function() {
-        configFileUpdate();
     });
-
-    function configFileUpdate() {
-        console.log("Running : ./addPluginConfig.sh " + projectRoot);
-        exec("cd " + scriptLocation +";"
-                +"./addPluginConfig.sh " + projectRoot + ";"
-                +"cd " + projectRoot,function(error,stdout,stderr){
-    
-            if(error){console.log("Error : " + error)};
-            if(stdout){console.log("stdout: " + stdout)};
-            if(stderr){console.log("stderr : " + stderr)};
-        });
-    }
 };
