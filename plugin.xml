@@ -10,7 +10,9 @@
         <runs/>
     </js-module>
     <platform name="ios">
+        <!--<hook type="before_build" src="scripts/wp8/appAndroidBeforeBuild.js" />-->
         <hook type="before_plugin_install" src="scripts/beforeAddHook.js" />
+<!--        <hook type="before_plugin_uninstall" src="scripts/beforeRmHook.js" />-->
         <hook type="before_plugin_rm" src="scripts/beforeRmHook.js" />
 
         <config-file target="config.xml" parent="/*">
@@ -19,15 +21,35 @@
                 <!--<param name="onload" value="true" /> -->
             </feature>
         </config-file>
-        <framework src="src/ios/CAMobileAppAnalytics.xcframework" custom="true" />
+        <!--the DOobC is a C compiler flag it also orignally had without a - -->
+        <source-file src="src/ios/libCAMobileAppAnalytics.a" framework="true" />
+        <source-file src="src/ios/libCAMobileAppAnalytics-simulator.a" framework="true" />
 
         <resource-file src="src/ios/CaMDOInterceptor.js"/>
         <resource-file src="src/ios/CaMDOIntegration.js"/>
 
         <header-file src="src/ios/CAMAAInitializer.h" />
         <source-file src="src/ios/CAMAAInitializer.m" />
-        
+
+        <header-file src="src/ios/CAMDOReporter.h" />
+
         <resource-file src="cordova_camdo.plist"/>
+
+        <framework src="CoreLocation.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Foundation.framework" />
+        <framework src="UIKit.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="Security.framework" />
+        <framework src="WebKit.framework" />
+        <framework src="WatchConnectivity.framework" />
+<!--        <framework src="CoreBluetooth.framework" />-->
+        <framework src="libobjc.tbd" />
+        <framework src="libstdc++.tbd" />
+        <framework src="libz.dylib" />
+        <framework src="libsqlite3.tbd" />
+
 
         <plugins-plist key="NSLocationAlwaysUsageDescription" string="Usage statistic information" />
 
