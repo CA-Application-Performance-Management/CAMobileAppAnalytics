@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '22.3.0'
+  s.version          = '2022.3.0.3'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."

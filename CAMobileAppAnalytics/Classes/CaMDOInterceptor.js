@@ -370,7 +370,11 @@ function sendTiming(){
         dictionary.type = "string";
         dictionary.key = "performanceData";
         dictionary.value = performanceData;
-        sendIntegrationEvent(dictionary);
+        if(!window.hasOwnProperty("cordova")){
+          sendIntegrationEvent(dictionary);
+        }else{
+          console.log("cordova app detected: performance NOT recorded ");
+        }
     } catch (e) {}
 }
 
