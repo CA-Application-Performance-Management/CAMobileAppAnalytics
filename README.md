@@ -13,7 +13,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 * Android
 
 ## Requirements
-1. iOS 8.0 or higher
+1. iOS 9.0 or higher
 
 ## Integration (iOS)
 Follow these steps to integrate the `camaa cordova plugin` in your project
