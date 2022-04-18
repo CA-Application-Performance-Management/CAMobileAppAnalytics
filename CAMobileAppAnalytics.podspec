@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.platform         =:ios, '9.0'
-  s.default_subspec = "lib"
+  s.default_subspecs = "lib"
 
   s.libraries = 'c++', 'z', 'sqlite3'
   s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
@@ -28,20 +28,20 @@ Pod::Spec.new do |s|
 
 
   s.subspec 'lib' do |ss|
-    ss.source_files = 'CAMobileAppAnalytics/**/*.h'
-    ss.public_header_files = 'CAMobileAppAnalytics/**/*.h'
-    ss.resources = 'CAMobileAppAnalytics/**/*.js'
-    ss.vendored_libraries = 'CAMobileAppAnalytics/**/*.a'
+    ss.source_files = 'CAMobileAppAnalytics/Classes/*.h'
+    ss.public_header_files = 'CAMobileAppAnalytics/Classes/*.h'
+    ss.resources = 'CAMobileAppAnalytics/Classes/*.js'
+    ss.vendored_libraries = 'CAMobileAppAnalytics/Classes/*.a'
   end
 
   s.subspec 'xcframework' do |ss|
-    ss.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
-    ss.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
-    ss.resources = 'CAMobileAppAnalytics/**/*.js'
+    # ss.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    # ss.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.resources = 'CAMobileAppAnalytics/Classes/*.js'
     ss.vendored_frameworks = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
-    ss.pod_target_xcconfig = {
-      'OTHER_LDFLAGS' => '-ObjC',
+    ss.xcconfig = {
+      'OTHER_LDFLAGS' => '-ObjC'
     }
   end
-
+  
 end
