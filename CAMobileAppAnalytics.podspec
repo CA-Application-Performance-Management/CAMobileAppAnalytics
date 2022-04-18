@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '2022.3.0.3'
+  s.version          = '2022.3.0.4'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
@@ -20,12 +20,28 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.platform         =:ios, '9.0'
-  s.source_files = 'CAMobileAppAnalytics/**/*.h'
-  s.public_header_files = 'CAMobileAppAnalytics/**/*.h'
-  s.resources = 'CAMobileAppAnalytics/**/*.js'
-  s.vendored_libraries = 'CAMobileAppAnalytics/**/*.a'
-  
+  s.default_subspec = "lib"
+
   s.libraries = 'c++', 'z', 'sqlite3'
   s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
   s.requires_arc = true
+
+
+  s.subspec 'lib' do |ss|
+    ss.source_files = 'CAMobileAppAnalytics/**/*.h'
+    ss.public_header_files = 'CAMobileAppAnalytics/**/*.h'
+    ss.resources = 'CAMobileAppAnalytics/**/*.js'
+    ss.vendored_libraries = 'CAMobileAppAnalytics/**/*.a'
+  end
+
+  s.subspec 'xcframework' do |ss|
+    ss.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.resources = 'CAMobileAppAnalytics/**/*.js'
+    ss.vendored_frameworks = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
+    ss.pod_target_xcconfig = {
+      'OTHER_LDFLAGS' => '-ObjC',
+    }
+  end
+
 end
