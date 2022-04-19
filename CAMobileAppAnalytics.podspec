@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '2022.3.0.4'
+  s.version          = '2022.3.0.5'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.platform         =:ios, '9.0'
+  s.readme           = "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics/blob/master/README.md"
   s.default_subspecs = "lib"
 
   s.libraries = 'c++', 'z', 'sqlite3'
