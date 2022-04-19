@@ -14,7 +14,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 
 ## Integration
 Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode project using CocoaPods
-1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile**
+1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile** to use CAMobileAppAnalytics static library
 
 ```
 target 'YourApp' do
@@ -22,7 +22,7 @@ target 'YourApp' do
 end
 ```
 
-If you want to use the CAMobileAppAnalytics SDK XCFramework please include the spec `CAMobileAppAnalytics/xcframework` in your Podfile:
+If you want to use the CAMobileAppAnalytics XCFramework, specify `pod CAMobileAppAnalytics/xcframework` in your **Podfile**
 ```
 target 'YourApp' do
     pod 'CAMobileAppAnalytics/xcframework'
