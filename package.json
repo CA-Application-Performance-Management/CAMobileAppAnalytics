@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-camaa/xcframework",
+  "name": "cordova-plugin-camaa-xcframework",
   "version": "2022.3.0",
   "description": "CAMAA Cordova library plugin. ",
   "cordova": {
-    "id": "cordova-plugin-camaa/xcframework",
+    "id": "cordova-plugin-camaa-xcframework",
     "platforms": [
       "ios",
       "android"
