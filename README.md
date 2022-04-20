@@ -14,12 +14,13 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 
 ## Requirements
 1. iOS 9.0 or higher
+2. Xcode 12.0 or higher
 
 ## Integration (iOS)
 Follow these steps to integrate the `camaa cordova plugin` in your project
 1. Run the following command from your Cordova project directory
 ```
-cordova plugin add cordova-plugin-camaa
+cordova plugin add cordova-plugin-camaa/xcframework
 ```
 2. Download `xxx_camdo.plist` and rename it to `cordova_camdo.plist`. You should replace this with existing file in your project after you installed the `camaa cordova plugin`.
 

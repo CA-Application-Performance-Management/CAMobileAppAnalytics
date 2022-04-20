@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-camaa"  version="2022.3.0">
+        id="cordova-plugin-camaa/xcframework"  version="2022.3.0">
     <name>CAMAA</name>
     <description>CAMAA Cordova library plugin. </description>
     <license>Apache 2.0</license>
@@ -28,6 +28,20 @@
         <source-file src="src/ios/CAMAAInitializer.m" />
         
         <resource-file src="cordova_camdo.plist"/>
+
+        <framework src="CoreLocation.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Foundation.framework" />
+        <framework src="UIKit.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="Security.framework" />
+        <framework src="WebKit.framework" />
+<!--        <framework src="CoreBluetooth.framework" />-->
+        <framework src="libobjc.tbd" />
+        <framework src="libstdc++.tbd" />
+        <framework src="libz.dylib" />
+        <framework src="libsqlite3.tbd" />
 
         <plugins-plist key="NSLocationAlwaysUsageDescription" string="Usage statistic information" />
 
