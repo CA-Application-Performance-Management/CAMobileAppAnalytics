@@ -1,6 +1,6 @@
 /**
  * @file Javascript Integration apis for CA-MAA-SDK.
- * @copyright Copyright (C) 2015, CA.  All rights reserved.
+ * @copyright Copyright (c) 2013-2022 CA Technologies (A Broadcom Company). All rights reserved.
  *
  * @global
  * @name CaMDOIntegration
