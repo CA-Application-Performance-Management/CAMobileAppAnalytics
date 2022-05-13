@@ -12,6 +12,10 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 1. Xcode 12+ with the XCFramework, Xcode 11+ with the static library
 2. iOS 9.0 or higher
 
+```
+Note: Update Cocoapods to latest version in your mac `sudo gem install cocoapods`
+```
+
 ## Integration
 Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode project using CocoaPods
 1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile** to use CAMobileAppAnalytics static library
@@ -96,5 +100,4 @@ The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 This software may be modified and distributed under the terms
 of the MIT license. See the [LICENSE](/LICENSE) file for details.
-
 
