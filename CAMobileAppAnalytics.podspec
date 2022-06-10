@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '2022.6.0.1'
+  s.version          = '2022.6.0.2'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
@@ -35,8 +35,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'xcframework' do |ss|
-    # ss.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
-    # ss.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
     ss.resources = 'CAMobileAppAnalytics/Classes/*.js'
     ss.vendored_frameworks = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
     ss.xcconfig = {
