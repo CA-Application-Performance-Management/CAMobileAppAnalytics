@@ -28,7 +28,10 @@ CaMDOIntegration.UIEventType = {
                     CAMAA_EVENT_SEGMENTED_CONTROL_PRESSED:"segment_control_pressed",
                     CAMAA_EVENT_SLIDER_MOVED:"slider_moved",
                     CAMAA_EVENT_STEPPER_PRESSED:"stepper_pressed",
-                    CAMAA_EVENT_SWITCH_PRESSED:"switch_pressed"};
+                    CAMAA_EVENT_SWITCH_PRESSED:"switch_pressed",
+                    CAMAA_AI_START:"ai_start";
+                    CAMAA_AI_END:@"ai_end";
+};
 /**
  * @function isScreenshotPolicyEnabled
  * @description Returns TRUE if screenshots are enabled by policy.  Otherwise return FALSE
