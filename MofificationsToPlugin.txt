@@ -1,4 +1,4 @@
-Updated to version 21.6.0 of the ca-maa-android-sdk-release.aar library (from CAAppBundle_SDK.zip, downloaded from the app config page in AXA)
+Updated to latest version of the ca-maa-android-sdk-release.aar library available on 12/20/2022 (from CAAppBundle_SDK.zip, downloaded from the app config page in AXA)
 
 
 Modifications
