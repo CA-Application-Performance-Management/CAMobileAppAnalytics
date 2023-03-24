@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-camaa-xcframework"  version="23.1.0">
+        id="cordova-plugin-camaa-xcframework"  version="23.4.0.1">
     <name>CAMAA</name>
     <description>CAMAA Cordova library plugin. </description>
     <license>Apache 2.0</license>
