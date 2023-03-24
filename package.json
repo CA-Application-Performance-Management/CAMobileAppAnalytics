@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-camaa-xcframework",
-  "version": "23.4.0.1",
+  "version": "23.4.0",
   "description": "CAMAA Cordova library plugin with xcframework support. ",
   "cordova": {
     "id": "cordova-plugin-camaa-xcframework",
