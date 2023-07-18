@@ -1,0 +1,16 @@
+PODS:
+  - CAMobileAppAnalytics/xcframework (2023.7.2)
+
+DEPENDENCIES:
+  - CAMobileAppAnalytics/xcframework (from `../`)
+
+EXTERNAL SOURCES:
+  CAMobileAppAnalytics:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CAMobileAppAnalytics: 2a50a5e2e2d097367a399a6c1544c2b7e0c4da03
+
+PODFILE CHECKSUM: 77737d2f546cee243957356faf206ad1c4175c9a
+
+COCOAPODS: 1.11.3

@@ -1,0 +1,1 @@
+../../../../../Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/CAMDOReporter.h
