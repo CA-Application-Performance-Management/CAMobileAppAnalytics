@@ -17,7 +17,15 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        .binaryTarget(name: "CAMobileAppAnalytics",
+    .target(
+        name: "CAMobileAppAnalytics",
+        dependencies: [
+        .target(
+              name: "xcframework",
+              condition: .when(platforms: [.iOS])
+            ),
+        ]),
+        .binaryTarget(name: "xcframework",
                       path: "./Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework"),
     ]
 )

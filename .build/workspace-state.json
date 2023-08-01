@@ -13,7 +13,7 @@
         "source" : {
           "type" : "local"
         },
-        "targetName" : "CAMobileAppAnalytics"
+        "targetName" : "xcframework"
       }
     ],
     "dependencies" : [
