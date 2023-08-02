@@ -31,7 +31,7 @@ let package = Package(
                .copy("Classes/CaMDOIntegration.js")
         ],
         cSettings: [
-            .headerSearchPath("./Sources/include")
+            .headerSearchPath("./Sources/CAMobileAppAnalytics/Classes")
         ],
         linkerSettings: [.unsafeFlags(["-ObjC"])]
         ),  
