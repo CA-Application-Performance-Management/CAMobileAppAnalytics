@@ -30,9 +30,9 @@ let package = Package(
                .copy("Classes/CaMDOInterceptor.js"), 
                .copy("Classes/CaMDOIntegration.js")
         ],
-        publicHeadersPath: "Classes/CAMDOReporter.h",
+        publicHeadersPath: "include",
         cSettings: [
-            .headerSearchPath("Classes")
+            .headerSearchPath("include")
         ],
         linkerSettings: [.unsafeFlags(["-ObjC"])]
         ),  
