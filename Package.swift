@@ -24,7 +24,15 @@ let package = Package(
               name: "xcframework",
               condition: .when(platforms: [.iOS])
             ),
-        ]),
+        ],
+        exclude: ["Classes/libCAMobileAppAnalytics.a", "Classes/libCAMobileAppAnalytics-simulator.a"],
+        resources: [
+               .copy("Classes/CaMDOInterceptor.js"), 
+               .copy("Classes/CaMDOIntegration.js")
+        ],
+        publicHeadersPath: "Classes/CAMDOReporter.h",
+        linkerSettings: [.unsafeFlags(["-ObjC"])]
+        ),  
         .binaryTarget(name: "xcframework",
                       path: "./Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework"),
     ]
