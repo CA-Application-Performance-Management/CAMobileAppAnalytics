@@ -31,6 +31,9 @@ let package = Package(
                .copy("Classes/CaMDOIntegration.js")
         ],
         publicHeadersPath: "Classes/CAMDOReporter.h",
+        cSettings: [
+            .headerSearchPath("Classes")
+        ],
         linkerSettings: [.unsafeFlags(["-ObjC"])]
         ),  
         .binaryTarget(name: "xcframework",
