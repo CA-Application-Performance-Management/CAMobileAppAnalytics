@@ -25,13 +25,14 @@ let package = Package(
               condition: .when(platforms: [.iOS])
             ),
         ],
+        path: "./Sources/CAMobileAppAnalytics/",
         exclude: ["Classes/libCAMobileAppAnalytics.a", "Classes/libCAMobileAppAnalytics-simulator.a"],
         resources: [
                .copy("Classes/CaMDOInterceptor.js"), 
                .copy("Classes/CaMDOIntegration.js")
         ],
         cSettings: [
-            .headerSearchPath("./Sources/CAMobileAppAnalytics/Classes")
+            .headerSearchPath("Classes")
         ],
         linkerSettings: [.unsafeFlags(["-ObjC"])]
         ),  
