@@ -4,12 +4,12 @@
       {
         "kind" : "xcframework",
         "packageRef" : {
-          "identity" : "axa-cocoapods-spm",
+          "identity" : "camobileappanalytics-spm",
           "kind" : "root",
-          "location" : "/Users/arunakumariyarra/Desktop/CA/PublishedSDKs/AXA-Cocoapods-SPM",
-          "name" : "AXA-Cocoapods-SPM"
+          "location" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics-SPM",
+          "name" : "CAMobileAppAnalytics-SPM"
         },
-        "path" : "/Users/arunakumariyarra/Desktop/CA/PublishedSDKs/AXA-Cocoapods-SPM/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
+        "path" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics-SPM/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
         "source" : {
           "type" : "local"
         },
