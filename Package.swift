@@ -28,8 +28,8 @@ let package = Package(
         path: "./Sources/CAMobileAppAnalytics/",
         exclude: ["Classes/libCAMobileAppAnalytics.a", "Classes/libCAMobileAppAnalytics-simulator.a"],
         resources: [
-               .process("Classes/CaMDOInterceptor.js"), 
-               .process("Classes/CaMDOIntegration.js")
+               .process("Resources/CaMDOInterceptor.js"), 
+               .process("Resources/CaMDOIntegration.js")
         ],
         cSettings: [
             .headerSearchPath("Classes")
