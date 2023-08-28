@@ -112,24 +112,23 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 5. Save and re-build your project
 
 > Note: 
->
 > Single Option - Usage Example
-    > ```swift
-    > import CAMobileAppAnalytics
-    > 
-    > CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose) { (completed, error) in
-    >    
-    > }
-    > ```
+>    
+>    ```swift
+>    import CAMobileAppAnalytics
 >
+>    CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose) { (completed, error) in
+>        
+>    }
+>   ```
 >
 > Multiple Options - Usage Example
-    > ```swift
-    > CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose.union(SDKOptions.SDKUIWebViewDelegate)) { (completed, error) in
-    >   
-    > }
-    > ```
-
+>
+>   ```swift
+>    CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose.union(SDKOptions.SDKUIWebViewDelegate)) { (completed, error) in
+>        
+>    }
+>    ```
 
 ## Using Resources from Swift Package Manager
 
