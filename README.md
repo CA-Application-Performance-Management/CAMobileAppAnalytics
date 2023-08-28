@@ -115,7 +115,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 > Single Option - Usage Example
 >    
 >    ```swift
->    import CAMobileAppAnalytics
 >
 >    CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose) { (completed, error) in
 >        
@@ -141,6 +140,8 @@ NSString *resourcePath = [[NSBundle CAMobileAppAnalytics_Bundle] pathForResource
 
 ### Swift
 ```swift
+import CAMobileAppAnalytics
+
 let path = Bundle.CAMobileAppAnalytics_Bundle.path(forResource: "CaMDOIntegration", ofType: "js")!
 ```
 
