@@ -4,12 +4,12 @@
       {
         "kind" : "xcframework",
         "packageRef" : {
-          "identity" : "camobileappanalytics-spm",
+          "identity" : "camobileappanalytics",
           "kind" : "root",
-          "location" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics-SPM",
-          "name" : "CAMobileAppAnalytics-SPM"
+          "location" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics",
+          "name" : "CAMobileAppAnalytics"
         },
-        "path" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics-SPM/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
+        "path" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
         "source" : {
           "type" : "local"
         },
