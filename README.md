@@ -61,7 +61,7 @@ $ pod install
 ```swift
 https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git
 ```
-3. Set the **Dependency Rule** to be `Up to Next Major Version` and then select **Add Package**
+3. Set the **Dependency Rule** to be `Branch` and specify `master` and then select **Add Package**
 4. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
 
 
@@ -71,7 +71,7 @@ _OR_
 1. Update `dependencies` in `Package.swift`
 ```swift
 dependencies: [
-    .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", .upToNextMajor(from: "2023.8.1"))
+    .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", .branch("master"))
 ]
 ```
 2. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
