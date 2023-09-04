@@ -28,17 +28,17 @@ Pod::Spec.new do |s|
 
 
   s.subspec 'lib' do |ss|
-    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.resources = 'Sources/CAMobileAppAnalytics/Resources/*.js'
-    ss.vendored_libraries = 'Sources/CAMobileAppAnalytics/Classes/*.a'
+    ss.source_files = 'CAMobileAppAnalytics/Classes/*.h'
+    ss.public_header_files = 'CAMobileAppAnalytics/Classes/*.h'
+    ss.resources = 'CAMobileAppAnalytics/Classes/*.js'
+    ss.vendored_libraries = 'CAMobileAppAnalytics/Classes/*.a'
   end
 
   s.subspec 'xcframework' do |ss|
-    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.resources = 'Sources/CAMobileAppAnalytics/Resources/*.js'
-    ss.vendored_frameworks = 'Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
+    ss.source_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.public_header_files = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework/ios-arm64_arm64e_armv7_armv7s/Headers/*.{h}'
+    ss.resources = 'CAMobileAppAnalytics/Classes/*.js'
+    ss.vendored_frameworks = 'CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
     ss.xcconfig = {
       'OTHER_LDFLAGS' => '-ObjC'
     }
