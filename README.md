@@ -26,7 +26,7 @@ Note: Update Cocoapods to latest version in your mac `sudo gem install cocoapods
 
 ## Integration
 
-Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode project using
+Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode project using Cocoapods or Swift Package Manager
 
 ### Cocoapods
 
@@ -59,22 +59,10 @@ $ pod install
 1. Add a package by selecting `File` → `Add Packages…` in Xcode’s menu bar
 2. Search for the CAMobileAppAnalytics SDK using the repo's URL:
 ```swift
-https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git
+https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics
 ```
-3. Set the **Dependency Rule** to be `Up to Next Major Version` and then select **Add Package**
+3. Set the **Dependency Rule** to be `Branch` and specify `master` and then select **Add Package**
 4. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
-
-
-_OR_
-
-
-1. Update `dependencies` in `Package.swift`
-```swift
-dependencies: [
-    .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", .upToNextMajor(from: "2023.8.1"))
-]
-```
-2. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
 
 
 ## Initialising the SDK in your Source code
