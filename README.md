@@ -56,8 +56,8 @@ $ pod install
 
 > If you've previously used CocoaPods, remove them from the project with `pod deintegrate`.
 
-1. Add a package by selecting `File` → `Add Packages…` in Xcode’s menu bar
-2. Search for the CAMobileAppAnalytics SDK using the repo's URL:
+1. Add a `CAMobileAppAnalytics` package by selecting `File` → `Add Packages…` in Xcode’s menu bar
+2. Search for the CAMobileAppAnalytics SDK using the below repo's URL:
 ```swift
 https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics
 ```
