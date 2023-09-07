@@ -54,15 +54,41 @@ $ pod install
 
 ### Swift Package Manager
 
-> If you've previously used CocoaPods, remove them from the project with `pod deintegrate`.
+> If you've previously used CocoaPods, run `pod deintegrate` to remove them from your project.
 
-1. Add a `CAMobileAppAnalytics` package by selecting `File` → `Add Packages…` in Xcode’s menu bar
-2. Search for the CAMobileAppAnalytics SDK using the below repo's URL:
-```swift
-https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics
-```
-3. Set the **Dependency Rule** to be `Branch` and specify `master` and then select **Add Package**
-4. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
+#### Installation
+
+1. Integrate `CAMobileAppAnalytics` package in to your project Via Xcode or Package.swift
+    <details>
+        <summary><i><b>Via Xcode</b></i></summary>
+
+      1. Add a `CAMobileAppAnalytics` package by selecting `File` → `Add Packages…` in Xcode’s menu bar
+      2. Search for the CAMobileAppAnalytics SDK using the below repo's URL:
+      ```swift
+      https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics
+      ```
+      3. Set the **Dependency Rule** to be `Branch` and specify `master` and then select **Add Package**
+    </details>
+    <details>
+        <summary><i><b>Via Package.swift</b></i></summary>
+            
+            1. To integrate `CAMobileAppAnalytics` to a Swift package via a Package.swift manifest, add `CAMobileAppAnalytics` to the dependencies array of your package. 
+            ```swift
+            dependencies: [
+                .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", branch: "master")
+            ]
+            ```
+            2. Then any target that depends on a `CAMobileAppAnalytics`, add it to the dependencies array of that target.
+            ```swift
+            .target(
+                name: "MyTargetName",
+                dependencies: ["CAMobileAppAnalytics"]
+            ),
+            ```
+
+</details>
+
+2. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
 
 
 ## Initialising the SDK in your Source code
