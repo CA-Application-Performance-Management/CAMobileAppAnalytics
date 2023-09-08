@@ -72,19 +72,19 @@ $ pod install
     <details>
         <summary><i><b>Via Package.swift</b></i></summary>
             
-            1. To integrate `CAMobileAppAnalytics` to a Swift package via a Package.swift manifest, add `CAMobileAppAnalytics` to the dependencies array of your package. 
-            ```swift
-            dependencies: [
-                .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", branch: "master")
-            ]
-            ```
-            2. Then any target that depends on a `CAMobileAppAnalytics`, add it to the dependencies array of that target.
-            ```swift
-            .target(
-                name: "MyTargetName",
-                dependencies: ["CAMobileAppAnalytics"]
-            ),
-            ```
+   1. To integrate `CAMobileAppAnalytics` to a Swift package via a Package.swift manifest, add `CAMobileAppAnalytics` to the dependencies array of your package. 
+   ```swift
+   dependencies: [
+       .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", branch: "master")
+   ]
+   ```
+   2. Then any target that depends on a `CAMobileAppAnalytics`, add it to the dependencies array of that target.
+   ```swift
+   .target(
+       name: "MyTargetName",
+       dependencies: ["CAMobileAppAnalytics"]
+   ),
+   ```
 
 </details>
 
