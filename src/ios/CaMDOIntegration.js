@@ -1,6 +1,6 @@
 /**
  * @file Javascript Integration apis for CA-MAA-SDK.
- * @copyright Copyright (c) 2013-2022 CA Technologies (A Broadcom Company). All rights reserved.
+ * @copyright Copyright (c) 2013-2024 CA Technologies (A Broadcom Company). All rights reserved.
  *
  * @global
  * @name CaMDOIntegration
@@ -29,8 +29,9 @@ CaMDOIntegration.UIEventType = {
                     CAMAA_EVENT_SLIDER_MOVED:"slider_moved",
                     CAMAA_EVENT_STEPPER_PRESSED:"stepper_pressed",
                     CAMAA_EVENT_SWITCH_PRESSED:"switch_pressed",
-                    CAMAA_AI_START:"ai_start",
-                    CAMAA_AI_END:"ai_end"};
+                    CAMAA_AI_START:"ai_start";
+                    CAMAA_AI_END:@"ai_end";
+};
 /**
  * @function isScreenshotPolicyEnabled
  * @description Returns TRUE if screenshots are enabled by policy.  Otherwise return FALSE
