@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## CAMobileAppAnalytics
 
-Copyright (c) 2020 arunaiosdev@gmail.com <aruna.yarra@broadcom.com>
+Copyright (c) 2020-2024 CA Technologies (A Broadcom Company)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

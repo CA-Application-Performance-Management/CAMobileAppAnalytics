@@ -165,7 +165,7 @@ For more documentation and API references, go to our [main website](https://tech
 
 ## License
 
-Copyright (c) 2023 Broadcom. All Rights Reserved.
+Copyright (c) 2020-2024 CA Technologies (A Broadcom Company). All Rights Reserved.
 The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 This software may be modified and distributed under the terms

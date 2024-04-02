@@ -2,8 +2,8 @@
 //  CAMobileAppAnalyticsTests.m
 //  CAMobileAppAnalyticsTests
 //
-//  Created by arunaiosdev@gmail.com on 02/03/2020.
-//  Copyright (c) 2020 arunaiosdev@gmail.com. All rights reserved.
+//  Created by Aruna Kumari Yarra on 02/03/2020.
+//  Copyright (c) 2020-2024 CA Technologies (A Broadcom Company). All rights reserved.
 //
 
 @import XCTest;
