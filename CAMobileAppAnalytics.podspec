@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CAMobileAppAnalytics'
-  s.version          = '24.7.2-beta.1.0'
+  s.version          = '24.7.2-beta.1.1'
   s.summary          = 'CAMobileAppAnalytics is an iOS SDK for App Experience Analytics.'
   s.description      = <<-DESC
   "CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps."
@@ -24,19 +24,17 @@ Pod::Spec.new do |s|
   s.libraries = 'c++', 'z', 'sqlite3'
   s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
   s.requires_arc = true
-
+  s.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+  s.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+  s.resource_bundles = {
+      "CAMobileAppAnalytics" => ['Sources/CAMobileAppAnalytics/Resources/PrivacyInfo.xcprivacy', 'Sources/CAMobileAppAnalytics/Resources/*.js']
+  }
 
   s.subspec 'lib' do |ss|
-    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.resources = 'Sources/CAMobileAppAnalytics/Resources/*.js','Sources/CAMobileAppAnalytics/Resources/PrivacyInfo.xcprivacy'
     ss.vendored_libraries = 'Sources/CAMobileAppAnalytics/Classes/*.a'
   end
 
   s.subspec 'xcframework' do |ss|
-    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.resources = 'Sources/CAMobileAppAnalytics/Resources/*.js','Sources/CAMobileAppAnalytics/Resources/PrivacyInfo.xcprivacy'
     ss.vendored_frameworks = 'Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
     ss.xcconfig = {
       'OTHER_LDFLAGS' => '-ObjC'
