@@ -24,18 +24,24 @@ Pod::Spec.new do |s|
   s.libraries = 'c++', 'z', 'sqlite3'
   s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
   s.requires_arc = true
-  s.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-  s.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-  s.resource_bundles = {
-      "CAMobileAppAnalytics" => ['Sources/CAMobileAppAnalytics/Resources/PrivacyInfo.xcprivacy', 'Sources/CAMobileAppAnalytics/Resources/*.js']
-  }
+
 
   s.subspec 'lib' do |ss|
+    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+    ss.resource_bundles = {
+      "CAMobileAppAnalytics" => ['Sources/CAMobileAppAnalytics/Resources/*.{xcprivacy,js}']
+    }
     ss.vendored_libraries = 'Sources/CAMobileAppAnalytics/Classes/*.a'
   end
 
   s.subspec 'xcframework' do |ss|
+    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
     ss.vendored_frameworks = 'Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
+    ss.resource_bundles = {
+      "CAMobileAppAnalytics" => ['Sources/CAMobileAppAnalytics/Resources/*.{xcprivacy,js}']
+    }
     ss.xcconfig = {
       'OTHER_LDFLAGS' => '-ObjC'
     }
