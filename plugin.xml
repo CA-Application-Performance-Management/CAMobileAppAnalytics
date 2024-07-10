@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-camaa"  version="24.7.2">
+        id="cordova-plugin-camaa"  version="24.7.3-beta.1.0">
     <name>CAMAA</name>
     <description>CAMAA Cordova library plugin. </description>
     <license>Apache 2.0</license>
@@ -34,7 +34,8 @@
         <header-file src="src/ios/CAMDOReporter.h" />
 
         <resource-file src="cordova_camdo.plist"/>
-
+        <resource-file src="src/ios/PrivacyInfo.xcprivacy"/>
+        
         <framework src="CoreLocation.framework" />
         <framework src="SystemConfiguration.framework" />
         <framework src="Foundation.framework" />
