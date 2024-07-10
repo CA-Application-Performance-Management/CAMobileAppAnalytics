@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-camaa-xcframework"  version="24.7.2">
+        id="cordova-plugin-camaa-xcframework"  version="24.7.3-beta.1.0">
     <name>CAMAA</name>
     <description>CAMAA Cordova library plugin. </description>
     <license>Apache 2.0</license>
@@ -23,7 +23,8 @@
 
         <resource-file src="src/ios/CaMDOInterceptor.js"/>
         <resource-file src="src/ios/CaMDOIntegration.js"/>
-
+        <resource-file src="src/ios/PrivacyInfo.xcprivacy"/>
+        
         <header-file src="src/ios/CAMAAInitializer.h" />
         <source-file src="src/ios/CAMAAInitializer.m" />
         
