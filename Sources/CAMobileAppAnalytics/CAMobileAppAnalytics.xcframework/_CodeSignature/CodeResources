@@ -4,25 +4,21 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>.DS_Store</key>
-		<data>
-		L5MBbHGWF1Vvbx5AaW7ED1+upSg=
-		</data>
 		<key>ios-arm64_arm64e_armv7_armv7s/Headers/CAMDOReporter.h</key>
 		<data>
-		YRLR2vBS3RrJsWcJVhfCA5wcwrI=
+		dzMi+41mv/UH/jdHsq59DefWn/0=
 		</data>
 		<key>ios-arm64_arm64e_armv7_armv7s/libCAMobileAppAnalytics.a</key>
 		<data>
-		LYoJuaUZq4dLH8+o+Ylcvceu88w=
+		ik5XKzO2wxQyijf9jCWPepdZDug=
 		</data>
 		<key>ios-arm64_i386_x86_64-simulator/Headers/CAMDOReporter.h</key>
 		<data>
-		YRLR2vBS3RrJsWcJVhfCA5wcwrI=
+		dzMi+41mv/UH/jdHsq59DefWn/0=
 		</data>
 		<key>ios-arm64_i386_x86_64-simulator/libCAMobileAppAnalytics.a</key>
 		<data>
-		YHX59hxFh0EPyEOlNyvcoIE8b/w=
+		U1sf6LkrpgkNqU3WUiWD3UOlyHM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -31,44 +27,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YRLR2vBS3RrJsWcJVhfCA5wcwrI=
+			dzMi+41mv/UH/jdHsq59DefWn/0=
 			</data>
 			<key>hash2</key>
 			<data>
-			+USpmkRPu4Kr4QWGAgu6OJmzsUMavNFyqMMRU1Wdrtw=
+			gWtUrYK5e8fa13cNqluOmE+z3o3YZmOB+PBOIVPOh8A=
 			</data>
 		</dict>
 		<key>ios-arm64_arm64e_armv7_armv7s/libCAMobileAppAnalytics.a</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LYoJuaUZq4dLH8+o+Ylcvceu88w=
+			ik5XKzO2wxQyijf9jCWPepdZDug=
 			</data>
 			<key>hash2</key>
 			<data>
-			DFeUjF9FIMMsoqtaRLskRrEfgOJHNx6xUs06/+3CPoQ=
+			tXE+/p6d2qKkXRvF5rctWA8QCt3BZUiV82al7EPSEx8=
 			</data>
 		</dict>
 		<key>ios-arm64_i386_x86_64-simulator/Headers/CAMDOReporter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YRLR2vBS3RrJsWcJVhfCA5wcwrI=
+			dzMi+41mv/UH/jdHsq59DefWn/0=
 			</data>
 			<key>hash2</key>
 			<data>
-			+USpmkRPu4Kr4QWGAgu6OJmzsUMavNFyqMMRU1Wdrtw=
+			gWtUrYK5e8fa13cNqluOmE+z3o3YZmOB+PBOIVPOh8A=
 			</data>
 		</dict>
 		<key>ios-arm64_i386_x86_64-simulator/libCAMobileAppAnalytics.a</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YHX59hxFh0EPyEOlNyvcoIE8b/w=
+			U1sf6LkrpgkNqU3WUiWD3UOlyHM=
 			</data>
 			<key>hash2</key>
 			<data>
-			06tfeU6AGXQ2tQJOBmqSWVxTsLJpnH6k/B5R+9LR2Z8=
+			0Z90zF3XCZl+idD1aq4g6o3mA19mGoCInXlziOP/9bI=
 			</data>
 		</dict>
 	</dict>
