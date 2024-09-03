@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
-
+#import <WebKit/WebKit.h>
 extern CGFloat CAMAA_SCREENSHOT_QUALITY_HIGH;
 extern CGFloat CAMAA_SCREENSHOT_QUALITY_MEDIUM;
 extern CGFloat CAMAA_SCREENSHOT_QUALITY_LOW;
@@ -509,6 +509,9 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
 
 #pragma mark UI Components event
 + (void) logUIEvent:(NSString *) eventType withValue:(NSString *) value;
+
+#pragma mark Append CAAXA BA details to WKWebView User-agent
++ (void) appendCAAXABrowserAgentDetailsToWebview:(WKWebView *)webview;
 @end
 
 #endif /* CAMDOReporter_h */
