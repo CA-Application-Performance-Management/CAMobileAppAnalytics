@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-camaa-xcframework"  version="24.9.1">
+        id="cordova-plugin-camaa-xcframework"  version="24.11.1">
     <name>CAMAA</name>
     <description>CAMAA Cordova library plugin. </description>
     <license>Apache 2.0</license>
@@ -23,13 +23,13 @@
 
         <resource-file src="src/ios/CaMDOInterceptor.js"/>
         <resource-file src="src/ios/CaMDOIntegration.js"/>
-        <resource-file src="src/ios/PrivacyInfo.xcprivacy"/>
-        
+
         <header-file src="src/ios/CAMAAInitializer.h" />
         <source-file src="src/ios/CAMAAInitializer.m" />
         
         <resource-file src="cordova_camdo.plist"/>
-
+        <resource-file src="src/ios/PrivacyInfo.xcprivacy"/>
+        
         <plugins-plist key="NSLocationAlwaysUsageDescription" string="Usage statistic information" />
 
 
