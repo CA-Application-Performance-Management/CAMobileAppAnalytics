@@ -29,7 +29,7 @@ extern NSString *const CAMAA_CRASH_OCCURRED;
  Key : "AXAMaxUploadNetworkCallsLimit";  String  : 1 - 10
  Key : "AXADisabledInterceptors";  Array : NSURLConnection ,NSURLSession ,UIActivityIndicatorView ,UIApplication , WKWebView , Gestures , Touch ; Note : Including UIApplication disables SDK.
  Key : "AXANavigationThrottle" ; String - 1000 , time in milliseconds to throttle navigation collection;
- Key : "AXAActiveSessionTimeOut" ; String, time in milliseconds to stop and start the new session when your app is a continuously active state
+ Key : "AXAInactiveSessionTimeOut" ; String, Time in milliseconds to stop and start a new session when the app is in an inactive state - Purpose: Controls the session timeout for inactive apps, allowing for a new session to start after the specified time. Default - 30000(30 sec)
  */
 
 //Register for SDK data upload notification. The receiver is notified when SDK uploads the data to the Collector.
@@ -144,7 +144,7 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
 + (NSString *) customerId;
 
 /**
- * Use this API to set the customer ID for this session.
+ * Use this API to set the customer ID for this session to uniquely identify the user of the application 
  *
  * @param customerId is a string containing the customer ID
  *
