@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>AXAiOSBindings</id>
-    <version>25.2.1</version>
+    <version>25.3.1</version>
     <title>AXAiOSBindings</title>
     <authors>CA Technologies (A Broadcom Company)</authors>
     <license type="file">LICENSE.txt</license>
     <readme>README.md</readme>
     <projectUrl>https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-enterprise-software/it-operations-management/app-experience-analytics-saas/SaaS/configuring/collect-data-from-ios-applications.html</projectUrl>
     <description>CAMobileAppAnalytics is an iOS SDK for App Experience Analytics that provides deep insights into the performance, user experience, crash, and log analytics of apps.</description>
-    <copyright>Copyright (c) 2013-2024 CA Technologies (A Broadcom Company)</copyright>
+    <copyright>Copyright (c) 2013-2025 CA Technologies (A Broadcom Company)</copyright>
     <tags>AXA APM DXI Broadcom CA App Experience Analytics</tags>
     <dependencies>
       <group targetFramework="Xamarin.iOS10" />
