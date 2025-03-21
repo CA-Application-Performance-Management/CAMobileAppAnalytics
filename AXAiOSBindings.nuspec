@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AXAiOSBindings</id>
-    <version>25.3.1</version>
+    <version>25.4.1</version>
     <title>AXAiOSBindings</title>
     <authors>CA Technologies (A Broadcom Company)</authors>
     <license type="file">LICENSE.txt</license>
