@@ -22,7 +22,15 @@ Note: Update Cocoapods to latest version in your mac `sudo gem install cocoapods
 
 1. Xcode 12+
 2. iOS 11.0 or later
-
+3. Add the following permissions to your application `Info.plist`, if not already present.
+    ```
+    <key>NSLocationWhenInUseUsageDescription</key>
+        <string>This allows us to track and gather analytic data for improving the app experience.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+        <string>This allows us to track and gather analytic data for improving the app experience.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>This allows us to track and gather analytic data for improving the app experience.</string>
+    ```
 
 ## Integration
 
@@ -32,24 +40,24 @@ Follow these steps to integrate the CAMobileAppAnalytics SDK in your Xcode proje
 
 1. Specify `pod CAMobileAppAnalytics` on a single line inside your target block in a **Podfile** to use CAMobileAppAnalytics static library
 
-```
-target 'YourApp' do
-    pod 'CAMobileAppAnalytics'
-end
-```
+    ```
+    target 'YourApp' do
+        pod 'CAMobileAppAnalytics'
+    end
+    ```
 
-If you want to use the CAMobileAppAnalytics XCFramework, specify `pod CAMobileAppAnalytics/xcframework` in your **Podfile**
-```
-target 'YourApp' do
-    pod 'CAMobileAppAnalytics/xcframework'
-end
-```
+    If you want to use the CAMobileAppAnalytics XCFramework, specify `pod CAMobileAppAnalytics/xcframework` in your **Podfile**
+    ```
+    target 'YourApp' do
+        pod 'CAMobileAppAnalytics/xcframework'
+    end
+    ```
 
-Then, run the following command using the command prompt from the folder of your project
+    Then, run the following command using the command prompt from the folder of your project
 
-```
-$ pod install
-```
+    ```
+    $ pod install
+    ```
 2. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
 
 ### Swift Package Manager
@@ -64,31 +72,30 @@ $ pod install
 
       1. Add a `CAMobileAppAnalytics` package by selecting `File` → `Add Packages…` in Xcode’s menu bar
       2. Search for the CAMobileAppAnalytics SDK using the below repo's URL:
-      ```swift
-      https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics
-      ```
+          ```swift
+          https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics
+          ```
       3. Set the **Dependency Rule** to be `Branch` and specify `master` and then select **Add Package**
     </details>
     <details>
         <summary><i><b>Via Package.swift</b></i></summary>
-            
-      1. To integrate `CAMobileAppAnalytics` to a Swift package via a Package.swift manifest, add `CAMobileAppAnalytics` to the dependencies array of your package. 
-      ```swift
-      dependencies: [
-          .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", branch: "master")
-      ]
-      ```
-      2. Then any target that depends on a `CAMobileAppAnalytics`, add it to the dependencies array of that target.
-      ```swift
-      .target(
-          name: "MyTargetName",
-          dependencies: ["CAMobileAppAnalytics"]
-      ),
-      ```
+
+          1. To integrate `CAMobileAppAnalytics` to a Swift package via a Package.swift manifest, add `CAMobileAppAnalytics` to the dependencies array of your package. 
+              ```swift
+              dependencies: [
+                  .package(url: "https://github.com/CA-Application-Performance-Management/CAMobileAppAnalytics.git", branch: "master")
+              ]
+              ```
+          2. Then any target that depends on a `CAMobileAppAnalytics`, add it to the dependencies array of that target.
+              ```swift
+              .target(
+                  name: "MyTargetName",
+                  dependencies: ["CAMobileAppAnalytics"]
+              ),
+              ```
 </details>
 
 2. Drag & Drop the downloaded `xxx_camdo.plist` file into the Supporting files
-
 
 ## Initialising the SDK in your Source code
 ### Objective C
@@ -97,13 +104,13 @@ $ pod install
 
 2. Initialize the CAMobileAppAnalytics sdk in `didFinishLaunchingWithOptions:` method 
 
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    [CAMDOReporter initializeSDKWithOptions:SDKLogLevelVerbose  completionHandler:nil];
-    return YES;
-}
-```
+    ```objc
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    {
+        [CAMDOReporter initializeSDKWithOptions:SDKLogLevelVerbose  completionHandler:nil];
+        return YES;
+    }
+    ```
 3. Save and re-build your project
 
 ### Swift
@@ -111,24 +118,23 @@ $ pod install
 2. Add the import header `#import "CAMDOReporter.h"` to your `<app_name>-Bridging-header.h` file. 
 3. Add the `<app_name>-Bridging-header.h` file to Swift Compiler - Code Generation section
 in the Build Settings.
-`<name of the project>/<app_name>-Bridging-header.h`
+    `<name of the project>/<app_name>-Bridging-header.h`
 4. Initialize the CAMobileAppAnalytics sdk in `didFinishLaunchingWithOptions` method 
-```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    //Initialize CA App Experience Analytics SDK
-    CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose) { (completed, error) in
-        
+    ```swift
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //Initialize CA App Experience Analytics SDK
+        CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose) { (completed, error) in
+            
+        }
+        return true
     }
-    return true
-}
-```
+    ```
 5. Save and re-build your project
 
 > Note: 
 > Single Option - Usage Example
 >    
 >    ```swift
->
 >    CAMDOReporter.initializeSDK(options: SDKOptions.SDKLogLevelVerbose) { (completed, error) in
 >        
 >    }
