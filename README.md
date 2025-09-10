@@ -11,7 +11,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 ## Supported platforms
 * iOS
 * Android
-
+ 
 ## Requirements
 1. iOS 8.0 or higher
 2. Add the following permissions to your application `Info.plist`, if not already present.
@@ -23,7 +23,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
         <string>This allows us to track and gather analytic data for improving the app experience.</string>
     ```
-    
+   
 ## Integration (iOS)
 Follow these steps to integrate the `camaa cordova plugin` in your project
 1. Run the following command from your Cordova project directory
