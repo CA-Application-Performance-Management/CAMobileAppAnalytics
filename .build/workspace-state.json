@@ -2,23 +2,30 @@
   "object" : {
     "artifacts" : [
       {
-        "kind" : "xcframework",
+        "kind" : {
+          "xcframework" : {
+
+          }
+        },
         "packageRef" : {
           "identity" : "camobileappanalytics",
           "kind" : "root",
-          "location" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics",
+          "location" : "/Users/arunakumariyarra/Desktop/arunaSPM/CAMobileAppAnalytics",
           "name" : "CAMobileAppAnalytics"
         },
-        "path" : "/Users/arunakumariyarra/Desktop/CA/Published SDKs/CAMobileAppAnalytics/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
+        "path" : "/Users/arunakumariyarra/Desktop/arunaSPM/CAMobileAppAnalytics/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
         "source" : {
           "type" : "local"
         },
-        "targetName" : "xcframework"
+        "targetName" : "CAMobileAppAnalyticsBinary"
       }
     ],
     "dependencies" : [
 
+    ],
+    "prebuilts" : [
+
     ]
   },
-  "version" : 6
+  "version" : 7
 }

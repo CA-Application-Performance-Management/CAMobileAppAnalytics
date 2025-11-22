@@ -1,4 +1,5 @@
 import Foundation
+@_exported import CAMobileAppAnalyticsWrapper
 public struct CAMobileAppAnalytics {
     public init() {
     }
