@@ -1,0 +1,14 @@
+//
+//  module.modulemap
+//  CAMobileAppAnalytics
+//
+//  Created by Aruna Kumari Yarra on 22/11/25.
+//
+
+module CAMobileAppAnalyticsWrapper {
+//    umbrella "include"
+    header "include/CAMobileAppAnalyticsWrapper.h"
+    export *
+//    header "include/CAMobileAppAnalyticsWrapper.h"
+//    export *
+}
