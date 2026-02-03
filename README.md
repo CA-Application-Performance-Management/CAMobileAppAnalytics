@@ -29,7 +29,7 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
 Follow these steps to integrate the `camaa cordova plugin` in your project
 
 1. **Download and extract the plugin**
-   - Download the `cordova-plugin-camaa-xcframework` zip folder provided to you.
+   - Download the `cordova-plugin-camaa-xcframework` zip folder from the AXA Dashboard.
    - Extract the zip to a location on your machine (for example, `~/plugins/cordova-plugin-camaa-xcframework`).
    - Keep this extracted folder in a path you can reference (e.g., your project directory or a shared plugins folder).
 
@@ -44,10 +44,8 @@ Follow these steps to integrate the `camaa cordova plugin` in your project
    ```
 
 3. **Configure the plist**
-   - Download `xxx_camdo.plist` and rename it to `cordova_camdo.plist`. Replace the existing file in your project with this file after you have installed the `camaa cordova plugin`.
+   - Download `xxx_camdo.plist` from the AXA Dashboard and rename it to `cordova_camdo.plist`. Replace the existing file in your project with this file after you have installed the `camaa cordova plugin`.
 
-
----
 ---
 ### Useful Tips (iOS)
   ##### SDK API
@@ -70,11 +68,9 @@ window.camaa.isSDKEnabled((didSucceed)=>{
   ```
 
 ---
----
 ### Todos
 
  - Write more Tests
- - Add android support
  - Make error reporting more descriptive
 
 
