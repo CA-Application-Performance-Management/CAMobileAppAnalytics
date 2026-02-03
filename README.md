@@ -27,11 +27,24 @@ Check out our [documentation](https://techdocs.broadcom.com/content/broadcom/tec
     
 ## Integration (iOS)
 Follow these steps to integrate the `camaa cordova plugin` in your project
-1. Run the following command from your Cordova project directory
-```
-cordova plugin add cordova-plugin-camaa-xcframework
-```
-2. Download `xxx_camdo.plist` and rename it to `cordova_camdo.plist`. You should replace this with existing file in your project after you installed the `camaa cordova plugin`.
+
+1. **Download and extract the plugin**
+   - Download the `cordova-plugin-camaa-xcframework` zip folder provided to you.
+   - Extract the zip to a location on your machine (for example, `~/plugins/cordova-plugin-camaa-xcframework`).
+   - Keep this extracted folder in a path you can reference (e.g., your project directory or a shared plugins folder).
+
+2. **Add the plugin from the local path**
+   - From your Cordova project directory, run:
+   ```
+   cordova plugin add <path-to-extracted-cordova-plugin-camaa-xcframework>
+   ```
+   - Example, if you extracted to `~/plugins/cordova-plugin-camaa-xcframework`:
+   ```
+   cordova plugin add ~/plugins/cordova-plugin-camaa-xcframework
+   ```
+
+3. **Configure the plist**
+   - Download `xxx_camdo.plist` and rename it to `cordova_camdo.plist`. Replace the existing file in your project with this file after you have installed the `camaa cordova plugin`.
 
 
 ---
