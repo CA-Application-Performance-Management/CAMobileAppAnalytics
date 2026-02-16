@@ -30,6 +30,7 @@ extern NSString *const CAMAA_CRASH_OCCURRED;
  Key : "AXADisabledInterceptors";  Array : NSURLConnection ,NSURLSession ,UIActivityIndicatorView ,UIApplication , WKWebView , Gestures , Touch ; Note : Including UIApplication disables SDK.
  Key : "AXANavigationThrottle" ; String - 1000 , time in milliseconds to throttle navigation collection;
  Key : "AXAInactiveSessionTimeOut" ; String, Time in milliseconds to stop and start a new session when the app is in an inactive state - Purpose: Controls the session timeout for inactive apps, allowing for a new session to start after the specified time. Default - 30000(30 sec)
+ Key : "AXASupportParallelTrans";  Boolean : True/False
  */
 
 //Register for SDK data upload notification. The receiver is notified when SDK uploads the data to the Collector.
@@ -309,6 +310,18 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
  */
 
 + (void) stopApplicationTransactionWithName:(NSString *) transactionName failure:(NSString *) failure completionHandler:(void(^)(BOOL completed,NSError *error)) completionBlock;
+
+/**
+ * Add transaction context header to a request so the resulting network event is attributed to the given transaction.
+ * Use when parallel transactions are enabled and the app creates requests that should be tied to a specific transaction.
+ * Looks up the transaction by name in the active transactions list and sets x-camaa-txn-context with bt, bs, txn_s.
+ *
+ * @param request Mutable request to add the header to (must not be nil)
+ * @param transactionName Name of an active transaction (must have been started and not yet stopped)
+ *
+ * If the transaction is not found (e.g. not started or already stopped), no header is added.
+ */
++ (void) addTransactionContextToRequest:(NSMutableURLRequest *)request forTransactionName:(NSString *)transactionName;
 
 /**
  * Use this API to provide feedback from the user after a crash
