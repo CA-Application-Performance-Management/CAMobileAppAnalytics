@@ -30,6 +30,8 @@ extern NSString *const CAMAA_CRASH_OCCURRED;
  Key : "AXADisabledInterceptors";  Array : NSURLConnection ,NSURLSession ,UIActivityIndicatorView ,UIApplication , WKWebView , Gestures , Touch ; Note : Including UIApplication disables SDK.
  Key : "AXANavigationThrottle" ; String - 1000 , time in milliseconds to throttle navigation collection;
  Key : "AXAInactiveSessionTimeOut" ; String, Time in milliseconds to stop and start a new session when the app is in an inactive state - Purpose: Controls the session timeout for inactive apps, allowing for a new session to start after the specified time. Default - 30000(30 sec)
+ Key : "AXASupportParentChildTrans";  Boolean : True/False. Default : False.
+        False or absent = parallel transaction mode (multiple transactions, per-thread context). True = parent-child mode (single global transaction; set True only for legacy single-transaction behavior).
  */
 
 //Register for SDK data upload notification. The receiver is notified when SDK uploads the data to the Collector.
@@ -490,6 +492,43 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
  */
 + (void) uploadEventsWithCompletionHandler:(void (^)(NSDictionary *response, NSError *error)) completionBlock;
 
+
+#pragma mark Async Parallel Transactions
+
+/**
+ * Attach transaction context to a target so the SDK can associate the transaction with the request.
+ *
+ * Use one of these options:
+ * Option 1 — Pass \c transactionContextTarget in \c startNetworkTransactionWithName:... ; SDK adds context to that target.
+ * Option 2 — Pass \c nil in the \c startNetworkTransactionWithName:, then call \c addNetworkTransactionContextToTarget:forTransactionName:completionHandler: when you have the target.
+ *
+ * Recommended transactionContextTarget types (\c id): \c NSMutableURLRequest or \c NSURL.
+ */
+
+/**
+ * Start a transaction and optionally attach its context to a target in one call. SDK sets transaction context on the URL only; use the same URL or request for the network call.
+ *
+ * @param transactionName The transaction name.
+ * @param serviceName The service name.
+ * @param transactionContextTarget Target (\c id): \c NSMutableURLRequest, \c NSURLRequest (immutable), or \c NSURL.
+ * @param completionBlock Called with \c completed and \c error when the transaction has been started and context set on the URL.
+ */
++ (void) startNetworkTransactionWithName:(NSString *)transactionName service:(NSString *)serviceName transactionContextTarget:(id _Nullable)transactionContextTarget completionHandler:(void(^)(BOOL completed, NSError *error)) completionBlock;
+
+/**
+ * Same as \c startNetworkTransactionWithName:service:transactionContextTarget:completionHandler: with service taken from the app name.
+ */
++ (void) startNetworkTransactionWithName:(NSString *)transactionName transactionContextTarget:(id _Nullable)transactionContextTarget completionHandler:(void(^)(BOOL completed, NSError *error)) completionBlock;
+
+/**
+ * Add transaction context to a target so the resulting network event is attributed to the given transaction.
+ * Use when you started a transaction without a target (\c transactionContextTarget = \c nil) and need to attach it later to a request or URL. SDK sets transaction context on the URL only.
+ *
+ * @param target Target (\c id): \c NSMutableURLRequest, \c NSURL, or \c dispatch_queue_t.
+ * @param transactionName Name of an active transaction (must have been started and not yet stopped).
+ * @param completionBlock Called with \c completed and \c error when context has been set on the target (or its URL) or when the call could not be performed.
+ */
++ (void) addNetworkTransactionContextToTarget:(id _Nullable)target forTransactionName:(NSString *)transactionName completionHandler:(void(^)(BOOL completed, NSError *error)) completionBlock;
 
 #pragma mark deprecated
 
