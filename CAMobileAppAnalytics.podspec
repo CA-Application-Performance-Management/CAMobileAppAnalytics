@@ -26,14 +26,14 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
 
-  s.subspec 'lib' do |ss|
-    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
-    ss.resource_bundles = {
-      "CAMobileAppAnalytics" => ['Sources/CAMobileAppAnalytics/Resources/*.{xcprivacy,js}']
-    }
-    ss.vendored_libraries = 'Sources/CAMobileAppAnalytics/Classes/*.a'
-  end
+  # s.subspec 'lib' do |ss|
+  #   ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+  #   ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+  #   ss.resource_bundles = {
+  #     "CAMobileAppAnalytics" => ['Sources/CAMobileAppAnalytics/Resources/*.{xcprivacy,js}']
+  #   }
+  #   ss.vendored_libraries = 'Sources/CAMobileAppAnalytics/Classes/*.a'
+  # end
 
   s.subspec 'xcframework' do |ss|
     ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
