@@ -382,6 +382,117 @@ CaMDOIntegration.stopApplicationTransaction = function(transactionObj, callback)
 
 
 /**
+ * @function    startNetworkTransaction
+ * @description Starts a new network transaction. Params order: transactionName (required), serviceName (optional), transactionContextTarget (optional URL String). When serviceName is omitted, app name is used.
+ *
+ * @param {Object} transactionObj - { transactionName (required), serviceName (optional), transactionContextTarget (optional URL String) }
+ * @param {callback} callback - callback(completed, error)
+ * @example
+ * CaMDOIntegration.startNetworkTransaction({
+ *     "transactionName": "checkout",
+ *     "transactionContextTarget": "https://api.example.com/checkout"
+ * }, callback);
+ * @example
+ * CaMDOIntegration.startNetworkTransaction({
+ *     "transactionName": "checkout",
+ *     "serviceName": "CheckoutService",
+ *     "transactionContextTarget": "https://api.example.com/checkout"
+ * }, callback);
+ */
+CaMDOIntegration.startNetworkTransaction = function(transactionObj, callback) {
+    if (!transactionObj || !transactionObj.transactionName) {
+        return;
+    }
+    var dictionary = {};
+    dictionary.action = "startNetworkTransaction";
+    dictionary.transactionName = transactionObj.transactionName;
+    if (transactionObj.serviceName && String(transactionObj.serviceName).trim()) {
+        dictionary.serviceName = transactionObj.serviceName;
+    }
+    if (transactionObj.transactionContextTarget) {
+        dictionary.transactionContextTarget = transactionObj.transactionContextTarget;
+    }
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
+
+/**
+ * @function    addNetworkTransactionContextToTarget
+ * @description Adds network transaction context to a target for an existing transaction.
+ *
+ * @param {Object} targetObj - { transactionName (required), transactionContextTarget (URL String) }
+ * @param {callback} callback - callback(completed, error)
+ * @example
+ * CaMDOIntegration.addNetworkTransactionContextToTarget({
+ *     "transactionName": "checkout",
+ *     "transactionContextTarget": "https://api.example.com/order"
+ * }, callback);
+ */
+CaMDOIntegration.addNetworkTransactionContextToTarget = function(targetObj, callback) {
+    if (!targetObj || !targetObj.transactionName) {
+        return;
+    }
+    var dictionary = {};
+    dictionary.action = "addNetworkTransactionContextToTarget";
+    dictionary.transactionName = targetObj.transactionName;
+    if (targetObj.transactionContextTarget) {
+        dictionary.transactionContextTarget = targetObj.transactionContextTarget;
+    }
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
+
+/**
+ * @function    stopNetworkTransaction
+ * @description Stops the Network transaction.
+ *
+ * @param {Transaction}  - Transaction Object
+ * @param {callback} - callback
+ *
+ * @example
+ * CaMDOIntegration.stopNetworkTransaction({
+ * "transactionName" : "itemAddedToShoppingCart",
+ * "serviceName" : "CheckoutScreen",
+ * "failure" : "Cart was deleted."
+ *    },callback);
+
+ */
+
+CaMDOIntegration.stopNetworkTransaction = function(transactionObj, callback) {
+    if (transactionObj) {
+        var dictionary = {};
+        dictionary.action = "stopNetworkTransaction";
+        dictionary.transactionName = transactionObj.transactionName;
+
+
+        if (!dictionary.transactionName) {
+            //console.error("CaMDOIntegration:: transactionName is required in transactionObj");
+            return;
+        }
+        if (callback) {
+            dictionary.callback = callback;
+        }
+        if (transactionObj.serviceName) {
+            dictionary.serviceName = transactionObj.serviceName;
+        }
+        if (transactionObj.failure) {
+            dictionary.failure = transactionObj.failure;
+        }
+        sendIntegrationEvent(dictionary);
+
+    } else {
+        //console.error("CaMDOIntegration:: transactionObj is missing.");
+    }
+    return true;
+};
+
+/**
  * @function setCustomerFeedback
  * @description sets the feedback from the user.
  * @param {string } feedback - Feedback to be sent
@@ -613,7 +724,25 @@ CaMDOIntegration.logNetworkEvent = function(evt,callback) {
     sendIntegrationEvent(dictionary);
 };
 
-
+/**
+ * @function performNetworkRequest
+ * @description Performs a network request via native NSURLSession. The SDK automatically monitors the request
+ * and logs the network event (no need to call logNetworkEvent). Use this instead of fetch() when you want
+ * SDK-monitored network calls with transaction context applied.
+ * @param {string} url - URL to request (GET).
+ * @param {callback} callback - callback(action, returnValue, error). Called with success or failure.
+ * @example
+ * CaMDOIntegration.performNetworkRequest("https://api.example.com/txn=1", function(a, v, e) { ... });
+ */
+CaMDOIntegration.performNetworkRequest = function(url, callback) {
+    var dictionary = {};
+    dictionary.action = "performNetworkRequest";
+    dictionary.url = url;
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
 
 /**
  * @function viewLoaded

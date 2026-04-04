@@ -6,19 +6,19 @@
 	<dict>
 		<key>ios-arm64_arm64e_armv7_armv7s/Headers/CAMDOReporter.h</key>
 		<data>
-		d0IFMmMoQxaWErw0JW+roVtJFao=
+		Sp5EtWkD7yqa8K/cRSRW+1YyvFI=
 		</data>
 		<key>ios-arm64_arm64e_armv7_armv7s/libCAMobileAppAnalytics.a</key>
 		<data>
-		62PKlGF7Za5sA0XvupmUyQ5Ck6s=
+		qbDSioMQZAvcD2gv/qrczqYV8hY=
 		</data>
 		<key>ios-arm64_i386_x86_64-simulator/Headers/CAMDOReporter.h</key>
 		<data>
-		d0IFMmMoQxaWErw0JW+roVtJFao=
+		Sp5EtWkD7yqa8K/cRSRW+1YyvFI=
 		</data>
 		<key>ios-arm64_i386_x86_64-simulator/libCAMobileAppAnalytics.a</key>
 		<data>
-		uapjW1IiUMdBV0HpWgvUzFtxXP4=
+		+BKzuGK0kEsWAdqha3OWkSXcsqg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -27,44 +27,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			d0IFMmMoQxaWErw0JW+roVtJFao=
+			Sp5EtWkD7yqa8K/cRSRW+1YyvFI=
 			</data>
 			<key>hash2</key>
 			<data>
-			+axPdE3myH15YERUxvDdmzrkjYiV3l2qEUPQ/AFMYug=
+			+8+6zyyRVy5hCbaBltWVtyYR2/9eBfQrLZ58BZWUmuw=
 			</data>
 		</dict>
 		<key>ios-arm64_arm64e_armv7_armv7s/libCAMobileAppAnalytics.a</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			62PKlGF7Za5sA0XvupmUyQ5Ck6s=
+			qbDSioMQZAvcD2gv/qrczqYV8hY=
 			</data>
 			<key>hash2</key>
 			<data>
-			pxSg5KNImMnp+qBFf2yFSiQRV6gdRF+8AB5jGwWewhA=
+			hjA7BoRWZBy2A2eDgsLFQby5ZOfMGOT4hSoJkIuYuBs=
 			</data>
 		</dict>
 		<key>ios-arm64_i386_x86_64-simulator/Headers/CAMDOReporter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			d0IFMmMoQxaWErw0JW+roVtJFao=
+			Sp5EtWkD7yqa8K/cRSRW+1YyvFI=
 			</data>
 			<key>hash2</key>
 			<data>
-			+axPdE3myH15YERUxvDdmzrkjYiV3l2qEUPQ/AFMYug=
+			+8+6zyyRVy5hCbaBltWVtyYR2/9eBfQrLZ58BZWUmuw=
 			</data>
 		</dict>
 		<key>ios-arm64_i386_x86_64-simulator/libCAMobileAppAnalytics.a</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uapjW1IiUMdBV0HpWgvUzFtxXP4=
+			+BKzuGK0kEsWAdqha3OWkSXcsqg=
 			</data>
 			<key>hash2</key>
 			<data>
-			BiVrEQCwIy/C3cpG+V28FmY+UKeWtiPPcb578pigoWA=
+			H3tIu0Yoci/QJysAkl+duU+Vf3O2xwSey7ixIen/f9M=
 			</data>
 		</dict>
 	</dict>
