@@ -53,6 +53,14 @@ CaMDOIntegration.UIEventType = {
                     CAMAA_AI_START:"ai_start",
                     CAMAA_AI_END:"ai_end"};
 /**
+ * Symbolic monitoring kinds (matches native {@code CAMDOMonitoringType} integer values).
+ */
+CaMDOIntegration.CAMDOMonitoringType = {
+    NETWORK: 0,
+    WEBVIEW: 1,
+    BLUETOOTH: 2
+};
+/**
  * @function isScreenshotPolicyEnabled
  * @description Returns TRUE if screenshots are enabled by policy.  Otherwise return FALSE
  *      @example
@@ -383,23 +391,46 @@ CaMDOIntegration.stopApplicationTransaction = function(transactionObj, callback)
 
 /**
  * @function    startNetworkTransaction
- * @description Starts a new network transaction. Params order: transactionName (required), serviceName (optional), transactionContextTarget (optional URL String). When serviceName is omitted, app name is used.
+ * @description Starts a new network transaction with context.
  *
- * @param {Object} transactionObj - { transactionName (required), serviceName (optional), transactionContextTarget (optional URL String) }
+ * @param {Object} transactionObj - { transactionName (required), transactionContextTarget (optional URL String) }
  * @param {callback} callback - callback(completed, error)
  * @example
  * CaMDOIntegration.startNetworkTransaction({
  *     "transactionName": "checkout",
  *     "transactionContextTarget": "https://api.example.com/checkout"
  * }, callback);
+ */
+CaMDOIntegration.startNetworkTransaction = function(transactionObj, callback) {
+    if (!transactionObj || !transactionObj.transactionName) {
+        return;
+    }
+    var dictionary = {};
+    dictionary.action = "startNetworkTransaction";
+    dictionary.transactionName = transactionObj.transactionName;
+    if (transactionObj.transactionContextTarget) {
+        dictionary.transactionContextTarget = transactionObj.transactionContextTarget;
+    }
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
+/**
+ * @function    startNetworkTransactionWithServiceName
+ * @description Starts a new network transaction with service and context.
+ *
+ * @param {Object} transactionObj - { transactionName (required), serviceName (optional), transactionContextTarget (optional URL String) }
+ * @param {callback} callback - callback(completed, error)
  * @example
- * CaMDOIntegration.startNetworkTransaction({
+ * CaMDOIntegration.startNetworkTransactionWithServiceName({
  *     "transactionName": "checkout",
  *     "serviceName": "CheckoutService",
  *     "transactionContextTarget": "https://api.example.com/checkout"
  * }, callback);
  */
-CaMDOIntegration.startNetworkTransaction = function(transactionObj, callback) {
+CaMDOIntegration.startNetworkTransactionWithServiceName = function(transactionObj, callback) {
     if (!transactionObj || !transactionObj.transactionName) {
         return;
     }
@@ -493,6 +524,24 @@ CaMDOIntegration.stopNetworkTransaction = function(transactionObj, callback) {
 };
 
 /**
+ * @function isSDKInitialized
+ * @description Returns TRUE if SDK is fully initialized. Otherwise returns FALSE.
+ * @param {callback} - callback (Required)
+ * @example
+ * CaMDOIntegration.isSDKInitialized(callback);
+ */
+CaMDOIntegration.isSDKInitialized = function(callback) {
+    var dictionary = {};
+    dictionary.action = "isSDKInitialized";
+    if (callback) {
+        dictionary.callback = callback;
+        sendIntegrationEvent(dictionary);
+    } else {
+        //console.error("CaMDOIntegration:: callback is required to return value from isSDKInitialized() call. ");
+    }
+};
+
+/**
  * @function setCustomerFeedback
  * @description sets the feedback from the user.
  * @param {string } feedback - Feedback to be sent
@@ -583,6 +632,59 @@ CaMDOIntegration.getAPMHeaders = function(callback) {
 CaMDOIntegration.enableSDK = function(callback) {
     var dictionary = {};
     dictionary.action = "enableSDK";
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
+/** 
+ * Use these APIs to turn **network**, **WKWebView**, or (on **Android only**) **Bluetooth** instrumentation on or off at runtime.
+*/
+/**
+ * @function enableMonitoring
+ * @description Turns on monitoring at runtime for the given type.
+ * @param {number} monitoringType - {@link CaMDOIntegration.CAMDOMonitoringType.NETWORK} or {@link CaMDOIntegration.CAMDOMonitoringType.WEBVIEW} or Android only - {@link CaMDOIntegration.CAMDOMonitoringType.BLUETOOTH}
+ * @param {callback} [callback] - optional callback
+ * @example
+ * CaMDOIntegration.enableMonitoring(CaMDOIntegration.CAMDOMonitoringType.NETWORK, callback);
+ */
+CaMDOIntegration.enableMonitoring = function(monitoringType, callback) {
+    var dictionary = {};
+    dictionary.action = "enableMonitoring";
+    dictionary.monitoringType = monitoringType;
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
+/**
+ * @function disableMonitoring
+ * @description Turns off Monitoring at runtime.
+ * @param {number} monitoringType - {@link CaMDOIntegration.CAMDOMonitoringType.NETWORK} or {@link CaMDOIntegration.CAMDOMonitoringType.WEBVIEW} or Android only - {@link CaMDOIntegration.CAMDOMonitoringType.BLUETOOTH}
+ * @param {callback} [callback] - optional callback
+ */
+CaMDOIntegration.disableMonitoring = function(monitoringType, callback) {
+    var dictionary = {};
+    dictionary.action = "disableMonitoring";
+    dictionary.monitoringType = monitoringType;
+    if (callback) {
+        dictionary.callback = callback;
+    }
+    sendIntegrationEvent(dictionary);
+};
+
+/**
+ * @function isMonitoringEnabled
+ * @description Returns whether runtime monitoring is enabled for the given type (via native callback JSON {@code value}).
+ * @param {number} monitoringType - {@link CaMDOIntegration.CAMDOMonitoringType.NETWORK} or {@link CaMDOIntegration.CAMDOMonitoringType.WEBVIEW} or Android only - {@link CaMDOIntegration.CAMDOMonitoringType.BLUETOOTH}
+ * @param {callback} callback - required
+ */
+CaMDOIntegration.isMonitoringEnabled = function(monitoringType, callback) {
+    var dictionary = {};
+    dictionary.action = "isMonitoringEnabled";
+    dictionary.monitoringType = monitoringType;
     if (callback) {
         dictionary.callback = callback;
     }
