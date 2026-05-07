@@ -53,14 +53,6 @@ CaMDOIntegration.UIEventType = {
                     CAMAA_AI_START:"ai_start",
                     CAMAA_AI_END:"ai_end"};
 /**
- * Symbolic monitoring kinds (matches native {@code CAMDOMonitoringType} integer values).
- */
-CaMDOIntegration.CAMDOMonitoringType = {
-    NETWORK: 0,
-    WEBVIEW: 1,
-    BLUETOOTH: 2
-};
-/**
  * @function isScreenshotPolicyEnabled
  * @description Returns TRUE if screenshots are enabled by policy.  Otherwise return FALSE
  *      @example
@@ -632,59 +624,6 @@ CaMDOIntegration.getAPMHeaders = function(callback) {
 CaMDOIntegration.enableSDK = function(callback) {
     var dictionary = {};
     dictionary.action = "enableSDK";
-    if (callback) {
-        dictionary.callback = callback;
-    }
-    sendIntegrationEvent(dictionary);
-};
-
-/** 
- * Use these APIs to turn **network**, **WKWebView**, or (on **Android only**) **Bluetooth** instrumentation on or off at runtime.
-*/
-/**
- * @function enableMonitoring
- * @description Turns on monitoring at runtime for the given type.
- * @param {number} monitoringType - {@link CaMDOIntegration.CAMDOMonitoringType.NETWORK} or {@link CaMDOIntegration.CAMDOMonitoringType.WEBVIEW} or Android only - {@link CaMDOIntegration.CAMDOMonitoringType.BLUETOOTH}
- * @param {callback} [callback] - optional callback
- * @example
- * CaMDOIntegration.enableMonitoring(CaMDOIntegration.CAMDOMonitoringType.NETWORK, callback);
- */
-CaMDOIntegration.enableMonitoring = function(monitoringType, callback) {
-    var dictionary = {};
-    dictionary.action = "enableMonitoring";
-    dictionary.monitoringType = monitoringType;
-    if (callback) {
-        dictionary.callback = callback;
-    }
-    sendIntegrationEvent(dictionary);
-};
-
-/**
- * @function disableMonitoring
- * @description Turns off Monitoring at runtime.
- * @param {number} monitoringType - {@link CaMDOIntegration.CAMDOMonitoringType.NETWORK} or {@link CaMDOIntegration.CAMDOMonitoringType.WEBVIEW} or Android only - {@link CaMDOIntegration.CAMDOMonitoringType.BLUETOOTH}
- * @param {callback} [callback] - optional callback
- */
-CaMDOIntegration.disableMonitoring = function(monitoringType, callback) {
-    var dictionary = {};
-    dictionary.action = "disableMonitoring";
-    dictionary.monitoringType = monitoringType;
-    if (callback) {
-        dictionary.callback = callback;
-    }
-    sendIntegrationEvent(dictionary);
-};
-
-/**
- * @function isMonitoringEnabled
- * @description Returns whether runtime monitoring is enabled for the given type (via native callback JSON {@code value}).
- * @param {number} monitoringType - {@link CaMDOIntegration.CAMDOMonitoringType.NETWORK} or {@link CaMDOIntegration.CAMDOMonitoringType.WEBVIEW} or Android only - {@link CaMDOIntegration.CAMDOMonitoringType.BLUETOOTH}
- * @param {callback} callback - required
- */
-CaMDOIntegration.isMonitoringEnabled = function(monitoringType, callback) {
-    var dictionary = {};
-    dictionary.action = "isMonitoringEnabled";
-    dictionary.monitoringType = monitoringType;
     if (callback) {
         dictionary.callback = callback;
     }
