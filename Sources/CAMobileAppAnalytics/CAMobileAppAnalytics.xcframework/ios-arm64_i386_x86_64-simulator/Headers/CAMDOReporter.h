@@ -142,12 +142,12 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
  * Turns on Network or WKWebView monitoring at Runtime.
  * If an interceptor is disabled via Info.plist then changing this flag has no effect for that type.
  */
-+ (void) enableMonitoring:(CAMDOMonitoringType)type;
++ (void) enableMonitoring:(CAMDOMonitoringType)type NS_SWIFT_NAME(enableMonitoring(_:));
 
 /**
  * Turns off Network or WKWebView instrumentation at Runtime.
  */
-+ (void) disableMonitoring:(CAMDOMonitoringType)type;
++ (void) disableMonitoring:(CAMDOMonitoringType)type NS_SWIFT_NAME(disableMonitoring(_:));
 
 /**
  * Returns whether runtime monitoring is currently enabled for the given type..
