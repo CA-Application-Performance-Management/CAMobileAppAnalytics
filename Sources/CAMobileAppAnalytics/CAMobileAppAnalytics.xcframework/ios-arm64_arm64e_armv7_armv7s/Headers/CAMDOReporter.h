@@ -32,6 +32,20 @@ extern NSString *const CAMAA_CRASH_OCCURRED;
  Key : "AXAInactiveSessionTimeOut" ; String, Time in milliseconds to stop and start a new session when the app is in an inactive state - Purpose: Controls the session timeout for inactive apps, allowing for a new session to start after the specified time. Default - 30000(30 sec)
  Key : "AXASupportParentChildTrans";  Boolean : True/False. Default : False.
         False or absent = parallel transaction mode. True = parent-child mode (single global transaction).
+ Key : "AXAExcludedDomains";  Array of String : List of hostname patterns whose network events the SDK will silently drop.
+        Matching is case-insensitive. Supports four pattern styles per entry:
+          Wildcard (*)   : "*" matches any sequence of characters anywhere in the hostname.
+                           "*.myvendor.com"   — any subdomain of myvendor.com.
+                           "api.*.com"        — api.<anything>.com.
+                           "*.myvendor.*"     — any subdomain with any TLD.
+          Exact match    : "api.myvendor.com" — matches only that exact hostname.
+          Leading dot    : ".myvendor.com"    — shorthand; matches "*.myvendor.com" and bare "myvendor.com".
+          Trailing dot   : "lookup.myvendor." — shorthand; matches "lookup.myvendor.*".
+        Example:
+          <key>AXAExcludedDomains</key>
+          <array>
+            <string>*.myvendor.com</string>
+          </array>
  */
 
 //Register for SDK data upload notification. The receiver is notified when SDK uploads the data to the Collector.
