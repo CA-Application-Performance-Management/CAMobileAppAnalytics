@@ -65,10 +65,10 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
                                   window.logEvent(this);
                                   }
                                   }, false);
-            if(typeof CaMaaAndroidIntegration != 'undefined') {
+            if(typeof CaMaaApmBridge != 'undefined') {
                 if(!corsExcludes.ignore(this.camaa_req_url)){
                 
-                var apmHeaderString = "" + CaMaaAndroidIntegration.getAPMHeader();
+                var apmHeaderString = "" + CaMaaApmBridge.getAPMHeader();
                 var apmHeader = apmHeaderString.split("||");
                 
                 if (apmHeader.length === 2) {
@@ -137,7 +137,14 @@ function interceptor_onsubmit(f) {
             }
         }
         if(typeof CaMaaAndroidIntegration != 'undefined') {
-            CaMaaAndroidIntegration.logFormRequest(action_url, f.action, http_method, enctype, JSON.stringify(jsonArr));
+            CaMaaAndroidIntegration.postMessage(JSON.stringify({
+                action: 'logFormRequest',
+                actionUrl: action_url,
+                formFullActionUrl: f.action,
+                httpMethod: http_method,
+                enctype: enctype,
+                jsonObjFormData: JSON.stringify(jsonArr)
+            }));
         }
     } catch (exception) {
         
