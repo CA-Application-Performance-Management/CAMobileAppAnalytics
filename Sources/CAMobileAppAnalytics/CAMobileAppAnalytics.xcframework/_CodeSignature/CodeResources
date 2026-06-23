@@ -10,7 +10,7 @@
 		</data>
 		<key>ios-arm64_arm64e_armv7_armv7s/libCAMobileAppAnalytics.a</key>
 		<data>
-		feTzszGUc1U/QRmUwt6g4H3QqzA=
+		DOMMm+Zq7getjqsQluY0Xcj2+MQ=
 		</data>
 		<key>ios-arm64_i386_x86_64-simulator/Headers/CAMDOReporter.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>ios-arm64_i386_x86_64-simulator/libCAMobileAppAnalytics.a</key>
 		<data>
-		bFNEacnBMc2zJXoGjuSSR7pQhrk=
+		24XVq5Bi/1cuNIrZma0QLfoq6ow=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -38,11 +38,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			feTzszGUc1U/QRmUwt6g4H3QqzA=
+			DOMMm+Zq7getjqsQluY0Xcj2+MQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			pksDbeMr/7XJ6esiFOFBra0DEMwJLEEn/7GZfgW6pos=
+			URd1ixnmjMX6TKw4y46hyOOSda4qeI2j/fjKLNCemCg=
 			</data>
 		</dict>
 		<key>ios-arm64_i386_x86_64-simulator/Headers/CAMDOReporter.h</key>
@@ -60,11 +60,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bFNEacnBMc2zJXoGjuSSR7pQhrk=
+			24XVq5Bi/1cuNIrZma0QLfoq6ow=
 			</data>
 			<key>hash2</key>
 			<data>
-			HFeRkGuDsDsVOhk4VTp/ERpEcqaYO0T2roSAj05/iaQ=
+			J8SzCdsvNsvNOQK6z0fRhCV3gdv3vBHOCkTwCrPCE+E=
 			</data>
 		</dict>
 	</dict>
