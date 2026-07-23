@@ -483,6 +483,42 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
 + (void) logNetworkEvent:(NSString *) url withStatus:(NSInteger) status withResponseTime:(int64_t) responseTime withInBytes:(int64_t) inBytes withOutBytes:(int64_t) outBytes completionHandler:(void(^)(BOOL completed, NSError *error)) completionBlock;
 
 /**
+ * Use this API to add a custom network event in the current session with an HTTP method type
+ *
+ * @param url is a string reprentation of the network URL to be logged
+ * @param status is an integer value indicating the status, e.g. 200, 404, etc.
+ * @param responseTime is an integer value representing the response time
+ * @param inBytes is an integer value representing the number of bytes input
+ * @param outBytes is an integer value representing the number of bytes output
+ * @param httpMethod is an  string representing the HTTP method type (e.g. @"GET", @"POST"). Pass nil to omit.
+ * @param completionBlock is a standard (BOOL completed, NSError *error) completionBlock
+ *
+ * If successful, completed = YES and error is nil.
+ * In case of failure, completed = NO and error will have NSError object with
+ * domain, code and localizedDescription.
+ *
+ */
++ (void) logNetworkEvent:(NSString *) url withStatus:(NSInteger) status withResponseTime:(int64_t) responseTime withInBytes:(int64_t) inBytes withOutBytes:(int64_t) outBytes withHttpMethod:(NSString *) httpMethod completionHandler:(void(^)(BOOL completed, NSError *error)) completionBlock;
+
+/**
+ * Use this API to add a custom network event in the current session with an HTTP method type
+ *
+ * @param url is a string reprentation of the network URL to be logged
+ * @param status is an integer value indicating the status, e.g. 200, 404, etc.
+ * @param responseTime is an integer value representing the response time
+ * @param inBytes is an integer value representing the number of bytes input
+ * @param outBytes is an integer value representing the number of bytes output
+ * @param httpMethod is a string representing the HTTP method type (e.g. @"GET", @"POST"). Pass nil to omit.
+ * @param apmCookie is a string representing the x-apm-ba-response-bt/x-apm-brtm-response-bt cookies from http response headers. Pass nil to omit.
+ * @param completionBlock is a standard (BOOL completed, NSError *error) completionBlock
+ *
+ * If successful, completed = YES and error is nil.
+ * In case of failure, completed = NO and error will have NSError object with
+ * domain, code and localizedDescription.
+ *
+ */
++(void)logNetworkEvent:(NSString *)url withStatus:(NSInteger)status withResponseTime:(long long)responseTime withInBytes:(long long)inBytes withOutBytes:(long long)outBytes withHttpMethod:(NSString *)httpMethod withAPMCookie:(NSString *)apmCookie completionHandler:(void (^)(BOOL, NSError *))completionBlock;
+/**
  * Use this API to add a custom text metric in the current session
  *
  * @param name is a string to indicate a text metric name

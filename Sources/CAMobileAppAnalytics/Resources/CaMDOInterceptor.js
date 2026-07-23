@@ -45,6 +45,7 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
     XMLHttpRequest.prototype.open = function(method, url) {
         this.camaa_start = new Date().getTime();
         this.camaa_req_url = url;
+        this.camaa_http_method = method;
         this.reallyOpen.apply(this, Array.prototype.slice.call(arguments));
         
     };
@@ -52,6 +53,8 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
     
     XMLHttpRequest.prototype.reallySend = XMLHttpRequest.prototype.send;
     XMLHttpRequest.prototype.send = function(body) {
+        var self = this;
+        var sendArgs = Array.prototype.slice.call(arguments);
         try {
             if (body) {
                 this.camaa_body_outBytes = body.length;
@@ -59,29 +62,25 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
                 this.camaa_body_outBytes = 0;
             }
             this.addEventListener("readystatechange", function() {
-                                  
+
                                   if (this.readyState === 4) {
                                   this.camaa_end = new Date().getTime();
                                   window.logEvent(this);
                                   }
                                   }, false);
-            if(typeof CaMaaAndroidIntegration != 'undefined') {
-                if(!corsExcludes.ignore(this.camaa_req_url)){
-                
-                var apmHeaderString = "" + CaMaaAndroidIntegration.getAPMHeader();
-                var apmHeader = apmHeaderString.split("||");
-                
+        } catch (exception) {}
+
+        getApmHeaderStringAsync(this.camaa_req_url).then(function(apmHeaderString) {
+            try {
+                var apmHeader = ("" + apmHeaderString).split("||");
                 if (apmHeader.length === 2) {
-                    this.setRequestHeader(apmHeader[0], apmHeader[1]);
+                    self.setRequestHeader(apmHeader[0], apmHeader[1]);
                 }
-                }
+            } catch (exception) {
+            } finally {
+                self.reallySend.apply(self, sendArgs);
             }
-            
-        } catch (exception) {
-            
-        } finally {
-            this.reallySend.apply(this, Array.prototype.slice.call(arguments));
-        }
+        });
     };
 }
 
@@ -137,7 +136,14 @@ function interceptor_onsubmit(f) {
             }
         }
         if(typeof CaMaaAndroidIntegration != 'undefined') {
-            CaMaaAndroidIntegration.logFormRequest(action_url, f.action, http_method, enctype, JSON.stringify(jsonArr));
+            CaMaaAndroidIntegration.postMessage(JSON.stringify({
+                action: 'logFormRequest',
+                actionUrl: action_url,
+                formFullActionUrl: f.action,
+                httpMethod: http_method,
+                enctype: enctype,
+                jsonObjFormData: JSON.stringify(jsonArr)
+            }));
         }
     } catch (exception) {
         
@@ -148,6 +154,18 @@ function logEvent(req) {
     log_event_android(req);
 }
 
+// cookie the browser already stored from Set-Cookie (fetch/XHR can't read Set-Cookie directly).
+function resolveCorrId(apmHeaderValue) {
+    try {
+        if (apmHeaderValue) {
+            return apmHeaderValue;
+        }
+        return parse("x-apm-brtm-response-bt");
+    } catch (exception) {
+        return '';
+    }
+}
+
 function log_event_android(req){
 try {
     if(!req){
@@ -156,9 +174,8 @@ try {
     var inBytes = 0;
     var outBytes = 0;
     var urlString='';
-    //TODO: revisit the logic to fetch the correlation id.
-    var corrId = parse("x-apm-brtm-response-bt");
-    
+    var corrId = resolveCorrId(req.getResponseHeader ? req.getResponseHeader("x-apm-ba-response-bt") : null);
+
     if (req.responseURL) {
         urlString = req.responseURL;
     } else if(req.camaa_req_url) {
@@ -198,6 +215,10 @@ try {
     dictionary.outbytes = outBytes;
     dictionary.responsetime = timeSpent;
     dictionary.corrId = corrId;
+    dictionary.apmCookie = corrId;
+    if (req.camaa_http_method) {
+        dictionary.httpmethod = req.camaa_http_method;
+    }
     sendIntegrationEvent(dictionary);
     
 } catch (exception) {
@@ -205,6 +226,117 @@ try {
 }
 }
 
+
+function getApmHeaderStringAsync(urlString) {
+    return new Promise(function(resolve) {
+        try {
+            if (corsExcludes.ignore(urlString)) {
+                resolve('');
+                return;
+            }
+            if (typeof CaMaaApmBridge != 'undefined') {
+                // Android: synchronous native bridge
+                resolve("" + CaMaaApmBridge.getAPMHeader());
+                return;
+            }
+            if (typeof CaMDOIntegration != 'undefined' && typeof CaMDOIntegration.getAPMHeaders === 'function') {
+                // iOS: no synchronous JS<->native bridge exists in WKWebView, so fall back to the async postMessage/callback API
+                CaMDOIntegration.getAPMHeaders(function(action,response,error) {
+                    try {
+                        if(typeof error == 'undefined'){
+                            resolve((response && response["x-apm-bt"]) ? ("x-apm-bt||" + response["x-apm-bt"]) : '');
+                        } else {
+                            resolve('');
+                        }
+                    } catch (e) {
+                        resolve('');
+                    }
+                });
+                return;
+            }
+            resolve('');
+        } catch (exception) {
+            resolve('');
+        }
+    });
+}
+
+if (window.fetch && !window.fetch._camaa_intercepted) {
+    var _camaa_originalFetch = window.fetch;
+    window.fetch = function(input, init) {
+        var self = this;
+        var startTime = new Date().getTime();
+        var urlString = (typeof input === 'string') ? input : (input && input.url ? input.url : '');
+        var httpMethod = (init && init.method) ? init.method : (input && input.method ? input.method : 'GET');
+
+        return getApmHeaderStringAsync(urlString).then(function(apmHeaderString) {
+            try {
+                var apmHeader = ("" + apmHeaderString).split("||");
+                if (apmHeader.length === 2) {
+                    var baseHeaders = (init && init.headers) ? init.headers : ((input && typeof input !== 'string') ? input.headers : undefined);
+                    var headers = new Headers(baseHeaders || {});
+                    headers.set(apmHeader[0], apmHeader[1]);
+                    init = init ? Object.assign({}, init, {headers: headers}) : {headers: headers};
+                }
+            } catch (exception) {}
+
+            return _camaa_originalFetch.apply(self, [input, init]).then(function(response) {
+                try {
+                    var endTime = new Date().getTime();
+                    var apmHeaderValue = (response.headers && response.headers.get) ? response.headers.get("x-apm-ba-response-bt") : null;
+                    var corrId = resolveCorrId(apmHeaderValue);
+                    var clonedResponse = response.clone();
+                    clonedResponse.text().then(function(body) {
+                        try {
+                            var inBytes = body ? body.length : 0;
+                            var outBytes = urlString ? urlString.length : 0;
+                            var dictionary = {};
+                            dictionary.action = "logNetworkEvent";
+                            dictionary.url = urlString;
+                            dictionary.status = response.status;
+                            dictionary.inbytes = inBytes;
+                            dictionary.outbytes = outBytes;
+                            dictionary.responsetime = endTime - startTime;
+                            dictionary.httpmethod = httpMethod.toUpperCase();
+                            dictionary.corrId = corrId;
+                            dictionary.apmCookie = corrId;
+                            sendIntegrationEvent(dictionary);
+                        } catch (e) {}
+                    }).catch(function() {
+                        try {
+                            var dictionary = {};
+                            dictionary.action = "logNetworkEvent";
+                            dictionary.url = urlString;
+                            dictionary.status = response.status;
+                            dictionary.inbytes = 0;
+                            dictionary.outbytes = urlString ? urlString.length : 0;
+                            dictionary.responsetime = new Date().getTime() - startTime;
+                            dictionary.httpmethod = httpMethod.toUpperCase();
+                            dictionary.corrId = corrId;
+                            dictionary.apmCookie = corrId;
+                            sendIntegrationEvent(dictionary);
+                        } catch (e) {}
+                    });
+                } catch (e) {}
+                return response;
+            }).catch(function(error) {
+                try {
+                    var dictionary = {};
+                    dictionary.action = "logNetworkEvent";
+                    dictionary.url = urlString;
+                    dictionary.status = 0;
+                    dictionary.inbytes = 0;
+                    dictionary.outbytes = urlString ? urlString.length : 0;
+                    dictionary.responsetime = new Date().getTime() - startTime;
+                    dictionary.httpmethod = httpMethod.toUpperCase();
+                    sendIntegrationEvent(dictionary);
+                } catch (e) {}
+                throw error;
+            });
+        });
+    };
+    window.fetch._camaa_intercepted = true;
+}
 
 function sendIntegrationEvent(dictionary) {
     sendMAASDKEvent(dictionary);

@@ -808,7 +808,8 @@ CaMDOIntegration.uploadEvents = function() {
  * "status" : "200",
  * "inbytes" : "23"
  * "outbytes" : "23"
- * "time" : "45"   //time in ms
+ * "time" : "45",  //time in ms
+ * "httpmethod" : "GET"  //optional
  *    },callback);
  *
  */
@@ -820,6 +821,9 @@ CaMDOIntegration.logNetworkEvent = function(evt,callback) {
     dictionary.inbytes = evt.inbytes;
     dictionary.outbytes = evt.outbytes;
     dictionary.responsetime = evt.time;
+    if (evt.httpmethod) {
+        dictionary.httpmethod = evt.httpmethod;
+    }
     if (callback) {
         dictionary.callback = callback;
     }
