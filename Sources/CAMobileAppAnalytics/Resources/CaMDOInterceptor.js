@@ -555,26 +555,8 @@ function isNonEmptyString(str) {
     return typeof str == 'string' && !!str.trim();
 }
 
-function parseString(apmCorrAttributes) {
-  var decodedAttributes = decode_utf8(apmCorrAttributes);
-  var allAttributes = decodedAttributes.split(",");
-  var result = "";
-  allAttributes.forEach(function(attr) {
-      var attrKeyVal = attr.split("=");
-      var attrkey = attrKeyVal.shift().trimLeft();
-      var attrvalue = attrKeyVal.join("=");
-      if(attrkey == "CorBrowsGUID")  {
-        result =  attrvalue;
-      }
-
-  });
-  return result;
-}
-
-
 function parse(c_name) {
     var corCookie = "";
-    var cookieMap = undefined;
     if (document.cookie.length > 0) {
         var cookie = readCookie(c_name);
         if(cookie) {
@@ -582,7 +564,7 @@ function parse(c_name) {
             corCookie =  keyval[1];
         }
     }
-    return parseString(corCookie);
+    return corCookie;
 }
 
 function readCookie(name) {
@@ -592,9 +574,7 @@ function readCookie(name) {
             return ca[i].replace(name, '');
         }
     }
-    
 }
-
 
 function encode_utf8(s) {
     return unescape(encodeURIComponent(s));

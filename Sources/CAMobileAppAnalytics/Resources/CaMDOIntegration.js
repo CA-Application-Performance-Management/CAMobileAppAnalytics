@@ -1167,46 +1167,6 @@ function isNonEmptyString(str) {
   return typeof str == 'string' && !!str.trim();
 }
 
-function parseString(apmCorrAttributes) {
-  var decodedAttributes = decode_utf8(apmCorrAttributes);
-  var allAttributes = decodedAttributes.split(",");
-  allAttributes.forEach(function(attr) {
-      var attrKeyVal = attr.split("=");
-      var attrkey = attrKeyVal.shift().trimLeft();
-      var attrvalue = attrKeyVal.join("=");
-      if(attrkey == "CorBrowsGUID")  {
-        result =  attrvalue;
-      }
-
-  });
-  return result;
-}
-
-
-function parse(c_name) {
-    var corCookie = "";
-    var cookieMap = undefined;
-    if (document.cookie.length > 0) {
-        var cookie = readCookie(c_name);
-        if(cookie) {
-            var keyval = cookie.split("=");
-            corCookie =  keyval[1];
-        }
-    }
-    return parseString(corCookie);
-}
-
-function readCookie(name) {
-    //    name += '=';
-    for (var ca = document.cookie.split(/;\s*/), i = ca.length - 1; i >= 0; i--) {
-        if (ca[i].indexOf(name) !== -1) {
-            return ca[i].replace(name, '');
-        }
-    }
-    
-}
-
-
 function encode_utf8(s) {
   return unescape(encodeURIComponent(s));
 }
