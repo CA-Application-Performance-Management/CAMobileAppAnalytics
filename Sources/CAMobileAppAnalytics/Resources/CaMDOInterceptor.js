@@ -39,18 +39,14 @@ if(!corsExcludes.ignore){
 registerSubmitListener();
 
 if (!XMLHttpRequest.prototype.reallyOpen) {
-    
-    
     XMLHttpRequest.prototype.reallyOpen = XMLHttpRequest.prototype.open;
     XMLHttpRequest.prototype.open = function(method, url) {
         this.camaa_start = new Date().getTime();
         this.camaa_req_url = url;
         this.camaa_http_method = method;
         this.reallyOpen.apply(this, Array.prototype.slice.call(arguments));
-        
     };
-    
-    
+
     XMLHttpRequest.prototype.reallySend = XMLHttpRequest.prototype.send;
     XMLHttpRequest.prototype.send = function(body) {
         var self = this;
@@ -62,11 +58,10 @@ if (!XMLHttpRequest.prototype.reallyOpen) {
                 this.camaa_body_outBytes = 0;
             }
             this.addEventListener("readystatechange", function() {
-
-                                  if (this.readyState === 4) {
-                                  this.camaa_end = new Date().getTime();
-                                  window.logEvent(this);
-                                  }
+                                    if (this.readyState === 4) {
+                                        this.camaa_end = new Date().getTime();
+                                        window.logEvent(this);
+                                    }
                                   }, false);
         } catch (exception) {}
 
@@ -167,72 +162,88 @@ function resolveCorrId(apmHeaderValue) {
 }
 
 function log_event_android(req){
-try {
-    if(!req){
-        return;
-    }
-    var inBytes = 0;
-    var outBytes = 0;
-    var urlString='';
-    var corrId = resolveCorrId(req.getResponseHeader ? req.getResponseHeader("x-apm-ba-response-bt") : null);
-
-    if (req.responseURL) {
-        urlString = req.responseURL;
-    } else if(req.camaa_req_url) {
-        urlString = req.camaa_req_url;
-    }else{
-        return;
-    }
-    
-    
-    if (urlString) {
-        outBytes = outBytes + urlString.length;
-    }
-    
-    if (req.camaa_body_outBytes) {
-        outBytes = outBytes + req.camaa_body_outBytes;
-    }
-    
-    if (req.responseText) {
-        var strContentLength = req.getResponseHeader("Content-Length");
-        if (strContentLength) {
-            inBytes = parseInt(strContentLength);
-            
-        } else {
-            /***
-             * When content length not available falling back on response text length.
-             * Most likely not the case so commenting it will change if we see any issue.
-             ***/
-            //inBytes = req.responseText.length;
+    try {
+        if(!req){
+            return;
         }
-    }
-    var timeSpent = req.camaa_end - req.camaa_start;
-    var dictionary = {};
-    dictionary.action = "logNetworkEvent";
-    dictionary.url = urlString;
-    dictionary.status = req.status;
-    dictionary.inbytes = inBytes;
-    dictionary.outbytes = outBytes;
-    dictionary.responsetime = timeSpent;
-    dictionary.corrId = corrId;
-    dictionary.apmCookie = corrId;
-    if (req.camaa_http_method) {
-        dictionary.httpmethod = req.camaa_http_method;
-    }
-    sendIntegrationEvent(dictionary);
-    
-} catch (exception) {
-    
-}
-}
+        var inBytes = 0;
+        var outBytes = 0;
+        var urlString='';
+        var apmResponseHeader = null;
+        if (typeof req.getResponseHeader === 'function') {
+            try {
+                apmResponseHeader = req.getResponseHeader("x-apm-ba-response-bt");
+            } catch (headerException) {
+                apmResponseHeader = null;
+            }
+        }
+        var corrId = resolveCorrId(apmResponseHeader);
+
+        if (req.responseURL) {
+            urlString = req.responseURL;
+        } else if(req.camaa_req_url) {
+            urlString = req.camaa_req_url;
+        }else{
+            return;
+        }
 
 
+        if (urlString) {
+            outBytes = outBytes + urlString.length;
+        }
+
+        if (req.camaa_body_outBytes) {
+            outBytes = outBytes + req.camaa_body_outBytes;
+        }
+
+        if (req.responseText) {
+            var strContentLength = req.getResponseHeader("Content-Length");
+            if (strContentLength) {
+                inBytes = parseInt(strContentLength);
+
+            } else {
+                /***
+                 * When content length not available falling back on response text length.
+                 * Most likely not the case so commenting it will change if we see any issue.
+                 ***/
+                //inBytes = req.responseText.length;
+            }
+        }
+        var timeSpent = req.camaa_end - req.camaa_start;
+        var dictionary = {};
+        dictionary.action = "logNetworkEvent";
+        dictionary.url = urlString;
+        dictionary.status = req.status;
+        dictionary.inbytes = inBytes;
+        dictionary.outbytes = outBytes;
+        dictionary.responsetime = timeSpent;
+        dictionary.corrId = corrId;
+        dictionary.apmCookie = corrId;
+        if (req.camaa_http_method) {
+            dictionary.httpmethod = req.camaa_http_method;
+        }
+        sendIntegrationEvent(dictionary);
+
+    } catch (exception) {
+
+    }
+}
 function getApmHeaderStringAsync(urlString) {
     return new Promise(function(resolve) {
         try {
             if (corsExcludes.ignore(urlString)) {
                 resolve('');
                 return;
+            }
+            if (urlString) {
+                var pathname = urlString;
+                try {
+                    pathname = new URL(urlString, window.location.href).pathname;
+                } catch (urlException) {}
+                if (pathname.endsWith("/browserMetrics")) {
+                    resolve('');
+                    return;
+                }
             }
             if (typeof CaMaaApmBridge != 'undefined') {
                 // Android: synchronous native bridge
@@ -283,7 +294,14 @@ if (window.fetch && !window.fetch._camaa_intercepted) {
             return _camaa_originalFetch.apply(self, [input, init]).then(function(response) {
                 try {
                     var endTime = new Date().getTime();
-                    var apmHeaderValue = (response.headers && response.headers.get) ? response.headers.get("x-apm-ba-response-bt") : null;
+                    var apmHeaderValue = null;
+                    if (response.headers && typeof response.headers.get === 'function') {
+                        try {
+                            apmHeaderValue = response.headers.get("x-apm-ba-response-bt");
+                        } catch (headerException) {
+                            apmHeaderValue = null;
+                        }
+                    }
                     var corrId = resolveCorrId(apmHeaderValue);
                     var clonedResponse = response.clone();
                     clonedResponse.text().then(function(body) {
@@ -583,11 +601,3 @@ function encode_utf8(s) {
 function decode_utf8(s) {
     return decodeURIComponent(unescape(s));
 }
-
-
-
-
-
-
-
-
