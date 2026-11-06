@@ -501,6 +501,24 @@ typedef NS_ENUM(NSUInteger, CAMDOSSLPinningMode) {
 + (void) logNetworkEvent:(NSString *) url withStatus:(NSInteger) status withResponseTime:(int64_t) responseTime withInBytes:(int64_t) inBytes withOutBytes:(int64_t) outBytes withHttpMethod:(NSString *) httpMethod completionHandler:(void(^)(BOOL completed, NSError *error)) completionBlock;
 
 /**
+ * Use this API to log a handled exception.
+ *
+ * @param exception is an NSException object caught in a try-catch block.
+ */
++ (void) logHandledException:(NSException *) exception;
+
+/**
+ * Use this API to log a handled error along with where it was handled.
+ *
+ * @param error is an NSError object.
+ * @param stack call stack symbols captured at the handling site. Pass nil to capture automatically.
+ * @param file source file of the call site (e.g. Swift #fileID / ObjC __FILE__).
+ * @param line line number of the call site.
+ * @param function function/method name of the call site.
+ */
++ (void) logHandledError:(nonnull NSError *) error stack:(nullable NSArray<NSString *> *)stack file:(nullable NSString *)file line:(NSInteger)line function:(nullable NSString *)function NS_REFINED_FOR_SWIFT;
+
+/**
  * Use this API to add a custom network event in the current session with an HTTP method type
  *
  * @param url is a string reprentation of the network URL to be logged

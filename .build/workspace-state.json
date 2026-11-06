@@ -10,10 +10,10 @@
         "packageRef" : {
           "identity" : "camobileappanalytics",
           "kind" : "root",
-          "location" : "/Users/arunakumariyarra/Desktop/arunaSPM/CAMobileAppAnalytics",
+          "location" : "/Users/arunakumariyarra/Desktop/CA/PublishedSDKs/CAMobileAppAnalytics",
           "name" : "CAMobileAppAnalytics"
         },
-        "path" : "/Users/arunakumariyarra/Desktop/arunaSPM/CAMobileAppAnalytics/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
+        "path" : "/Users/arunakumariyarra/Desktop/CA/PublishedSDKs/CAMobileAppAnalytics/Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework",
         "source" : {
           "type" : "local"
         },

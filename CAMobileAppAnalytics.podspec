@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
   s.libraries = 'c++', 'z', 'sqlite3'
   s.frameworks = 'CoreLocation', 'SystemConfiguration', 'Foundation', 'UIKit', 'CoreGraphics', 'Security', 'CoreTelephony', 'WebKit'
   s.requires_arc = true
+  s.swift_version = '5.0'
 
 
   # s.subspec 'lib' do |ss|
@@ -36,7 +37,7 @@ Pod::Spec.new do |s|
   # end
 
   s.subspec 'xcframework' do |ss|
-    ss.source_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
+    ss.source_files = ['Sources/CAMobileAppAnalytics/Classes/*.h', 'Sources/CAMobileAppAnalytics/CAMDOReporter+Swift.swift']
     ss.public_header_files = 'Sources/CAMobileAppAnalytics/Classes/*.h'
     ss.vendored_frameworks = 'Sources/CAMobileAppAnalytics/CAMobileAppAnalytics.xcframework'
     ss.resource_bundles = {
