@@ -1028,13 +1028,26 @@ CaMDOIntegration.logUIEvent = function(eventType,value,callback) {
  * @param :{errorObj} : Error object received after error has occurred in catch block
  */
 CaMDOIntegration.logHandledExceptionFromJS = function(errorObj) {
-    if(!errorObj)
+    if (!errorObj || errorObj === undefined || errorObj === null || errorObj === "")
         return;
     var dictionary = {};
     dictionary.action = "logHandledExceptionFromJS";
-    dictionary.name = errorObj.name;
-    dictionary.message = errorObj.message;
-    dictionary.stacktrace = errorObj.stack;
+    if (typeof errorObj === "string") {
+        // A string was thrown instead of an Error object
+        dictionary.name = "Error";
+        dictionary.message = errorObj;
+    } else {
+        // Only pass the attributes that are present. A missing or empty value is left out.
+        if (errorObj.name) {
+            dictionary.name = String(errorObj.name);
+        }
+        if (errorObj.message) {
+            dictionary.message = String(errorObj.message);
+        }
+        if (errorObj.stack) {
+            dictionary.stacktrace = String(errorObj.stack);
+        }
+    }
     sendIntegrationEvent(dictionary);
 };
 //************************ Integration functions ******************************* //
